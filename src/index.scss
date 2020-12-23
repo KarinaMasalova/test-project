@@ -1,0 +1,19 @@
+@import "./colors.scss";
+@import "./placeholders.scss";
+@import "./mixins.scss";
+
+html {
+    font-size: 10px;
+}
+
+* {
+    @include font();
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $color-app-bg;
+    min-width: 1280px;
+}

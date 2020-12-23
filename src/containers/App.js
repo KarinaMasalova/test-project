@@ -1,5 +1,5 @@
 import React from "react";
-import '../styles/style.scss';
+import './App.scss';
 
 export default function App() {
     return (
