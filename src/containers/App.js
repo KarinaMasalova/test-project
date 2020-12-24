@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Paper, Switch } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -8,6 +8,8 @@ import './App.scss';
 export default function App() {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
     const [darkMode, setDarkMode] = useState(prefersDarkMode);
+
+    useEffect(() => setDarkMode(prefersDarkMode), [prefersDarkMode]);
 
     const theme = useMemo(() =>
         createMuiTheme({
