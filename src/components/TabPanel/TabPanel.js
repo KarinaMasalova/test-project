@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-import useStyles from '../../utils/styles';
+import getTabPanelStyles from './styles';
 
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { useHistory } from 'react-router-dom';
 
-import { useTheme } from '@material-ui/core/styles';
+import { useTheme, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -47,6 +47,7 @@ const a11yProps = (index) => {
 }
 
 export default function FullWidthTabs() {
+  const useStyles = makeStyles(getTabPanelStyles);
   const classes = useStyles();
   const theme = useTheme();
   const history = useHistory();
