@@ -18,7 +18,8 @@ module.exports = (env, options) => {
             compress: true,
             port: 9000,
             watchContentBase: true,
-            progress: true
+            progress: true,
+            liveReload: true
         },
         module: {
             rules: [
