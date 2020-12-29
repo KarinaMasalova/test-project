@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+
+import useStyles from '../../utils/styles';
+
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { useHistory } from 'react-router-dom';
 
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -23,7 +26,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          <Typography component={'span'}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -42,13 +45,6 @@ const a11yProps = (index) => {
     'aria-controls': `full-width-tabpanel-${index}`,
   };
 }
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: theme.palette.background.paper,
-    minWidth: 1280,
-  },
-}));
 
 export default function FullWidthTabs() {
   const classes = useStyles();

@@ -5,3 +5,11 @@
     font-style: $style;
     letter-spacing: $spacing;
 }
+
+@mixin background($display: block, $image, $repeat: no-repeat, $size, $position: center) {
+    display: $display;
+    background-image: url($image);
+    background-repeat: $repeat;
+    background-size: $size;
+    background-position: $position;
+}

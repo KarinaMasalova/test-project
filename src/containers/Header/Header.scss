@@ -1,0 +1,17 @@
+@import '../../mixins.scss';
+
+.header {
+    display: flex;
+    width: 100%;
+}
+
+.logo {
+    padding: 0 1%;
+    width: 10%;
+    height: 48px;
+}
+
+.logo__img {
+    height: 100%;
+    @include background($image: '../../img/logo.svg', $size: contain);
+}
