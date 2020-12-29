@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './Menu.scss';
 import Switch from '../Switch/Switch';
+import getMenuStyles from './styles';
+
+import { makeStyles } from '@material-ui/core/styles';
 
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
@@ -14,10 +17,11 @@ const options = [
   'Callisto'
 ];
 
-const ITEM_HEIGHT = 48;
-
 export default function LongMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const useStyles = makeStyles(getMenuStyles);
+  const classes = useStyles();
+
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => setAnchorEl(event.currentTarget);
@@ -25,7 +29,7 @@ export default function LongMenu() {
   const handleClose = () => setAnchorEl(null);
 
   return (
-    <div>
+    <div className={classes.root}>
       <IconButton
         aria-label="more"
         aria-controls="long-menu"
@@ -40,15 +44,10 @@ export default function LongMenu() {
         keepMounted
         open={open}
         onClose={handleClose}
-        PaperProps={{
-          style: {
-            maxHeight: ITEM_HEIGHT * 4.5,
-            width: '20ch'
-          },
-        }}
+        PaperProps={{className: classes.style}}
       >
         {options.map((option) => (
-          <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
+          <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose} paperprops={{className: classes.style}}>
             {option}
           </MenuItem>
         ))}
