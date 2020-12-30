@@ -10,7 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import getPlanetsTableStyles from './style';
+import { getPlanetsTableStyles } from './style';
 import loadPlanetData from '../../utils/api';
 import { getComparator, tableSort } from './sorting';
 import EnhancedTableHead from './PlanetsTableHead';
