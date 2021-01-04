@@ -2,7 +2,7 @@ import React from "react";
 
 import './Header.scss';
 
-import Menu from '../../components/Menu/Menu';
+import Menu from '../../components/HeaderOptionsMenu/HeaderOptionsMenu';
 
 import Tabs from "../../components/TabPanel/TabPanel";
 

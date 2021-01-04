@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import './Menu.scss';
-
 import { makeStyles } from '@material-ui/core/styles';
 
 import IconButton from '@material-ui/core/IconButton';
@@ -12,9 +10,7 @@ import getMenuStyles from './styles';
 import Switch from '../Switch/Switch';
 
 const options = [
-  'None',
-  <Switch />,
-  'Callisto'
+  <Switch />
 ];
 
 export default function LongMenu() {

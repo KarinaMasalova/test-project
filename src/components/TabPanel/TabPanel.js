@@ -48,7 +48,7 @@ const a11yProps = (index) => {
   };
 }
 
-export default function FullWidthTabs() {
+export default function HeaderTabs() {
   const useStyles = makeStyles(getTabPanelStyles);
   const classes = useStyles();
   const theme = useTheme();
@@ -85,9 +85,8 @@ export default function FullWidthTabs() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="Home" {...a11yProps(0)} />
-          <Tab label="Lawyers" {...a11yProps(1)} />
-          <Tab label="Charts" {...a11yProps(2)} />
+          <Tab label="Lawyers" {...a11yProps(0)} />
+          <Tab label="Charts" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -95,11 +94,10 @@ export default function FullWidthTabs() {
         index={value}
         onChangeIndex={handleChangeIndex}
       >
-        <TabPanel value={value} index={0} dir={theme.direction}>Home</TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
+        <TabPanel value={value} index={0} dir={theme.direction}>
           <LawyersTable />
         </TabPanel>
-        <TabPanel value={value} index={2} dir={theme.direction}>Charts</TabPanel>
+        <TabPanel value={value} index={1} dir={theme.direction}>Charts</TabPanel>
       </SwipeableViews>
     </div>
   );
