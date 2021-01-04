@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import allPlanetsReducer from "./planet/planet.reducer";
+import allLawyersReducer from "./lawyers/lawyers.reducer";
 
 const rootReducer = combineReducers({
-    allPlanetsReducer
+    allLawyersReducer
 });
 
 export default rootReducer;

@@ -12,7 +12,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import PlanetsTable from '../PlanetsTable/PlanetsTable';
+import LawyersTable from '../LawyersTable/LawyersTable';
 import getTabPanelStyles from './styles';
 
 function TabPanel(props) {
@@ -62,7 +62,7 @@ export default function FullWidthTabs() {
         changePath('/');
         break;
       case 1:
-        changePath('/planets');
+        changePath('/lawyers');
         break;
       case 2:
         changePath('/charts');
@@ -86,7 +86,7 @@ export default function FullWidthTabs() {
           aria-label="full width tabs example"
         >
           <Tab label="Home" {...a11yProps(0)} />
-          <Tab label="Planets" {...a11yProps(1)} />
+          <Tab label="Lawyers" {...a11yProps(1)} />
           <Tab label="Charts" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
@@ -97,7 +97,7 @@ export default function FullWidthTabs() {
       >
         <TabPanel value={value} index={0} dir={theme.direction}>Home</TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <PlanetsTable />
+          <LawyersTable />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>Charts</TabPanel>
       </SwipeableViews>

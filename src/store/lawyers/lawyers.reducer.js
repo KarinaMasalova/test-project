@@ -1,12 +1,12 @@
 const initialState = {
-    allPlanets: []
+    allLawyers: []
 };
 
 export default function allPlanetsReducer(state = initialState, action) {
     switch(action.type) {
-        case "SET_ALL_PLANETS":
+        case "SET_ALL_LAWYERS":
             return {
-                allPlanets: action.payload
+                allLawyers: action.payload
             }
         default:
             return state;

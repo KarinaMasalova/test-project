@@ -1,3 +1,0 @@
-const SET_ALL_PLANETS = 'SET_ALL_PLANETS';
-
-export default SET_ALL_PLANETS;

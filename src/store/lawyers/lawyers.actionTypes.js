@@ -1,0 +1,3 @@
+const SET_ALL_LAWYERS = 'SET_ALL_LAWYERS';
+
+export default SET_ALL_LAWYERS;

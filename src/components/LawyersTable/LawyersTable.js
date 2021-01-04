@@ -11,15 +11,15 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import { getPlanetsTableStyles } from './style';
-import loadPlanetData from '../../utils/api';
+import { getLawyersTableStyles } from './style';
+import loadLawyersData from '../../utils/api';
 import { getComparator, tableSort } from './sorting';
-import EnhancedTableHead from './PlanetsTableHead';
-import EnhancedTableToolbar from './PlanetsTableToolbar';
+import EnhancedTableHead from './LawyersTableHead';
+import EnhancedTableToolbar from './LawyersTableToolbar';
 
-import setAllPlanets from '../../store/planet/planet.actions';
+import setAllLawyers from '../../store/lawyers/lawyers.actions';
 
-const useStyles = makeStyles(getPlanetsTableStyles);
+const useStyles = makeStyles(getLawyersTableStyles);
 
 export default function EnhancedTable() {
   const dispatch = useDispatch();
@@ -32,12 +32,12 @@ export default function EnhancedTable() {
 
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
-  const getAllPlanets = (state) => state.allPlanetsReducer.allPlanets;
-  const rows = useSelector(getAllPlanets);
+  const getAllLawyers = (state) => state.allLawyersReducer.allLawyers;
+  const rows = useSelector(getAllLawyers);
 
   useEffect(() => {
-    loadPlanetData()
-      .then((data) => dispatch(setAllPlanets(data.results)))
+    loadLawyersData()
+      .then((data) => dispatch(setAllLawyers(data)))
       .catch((error) => console.log(error));
   }, []);
 
@@ -118,7 +118,7 @@ export default function EnhancedTable() {
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.name}
+                      key={row.firstName}
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
@@ -128,14 +128,22 @@ export default function EnhancedTable() {
                         />
                       </TableCell>
                       <TableCell component="th" id={labelId} scope="row" padding="none">
-                        {row.name}
+                        {row.firstName}
                       </TableCell>
-                      <TableCell align="left">{row.diameter}</TableCell>
-                      <TableCell align="left">{row.climate}</TableCell>
-                      <TableCell align="left">{row.terrain}</TableCell>
-                      <TableCell align="left">{row.population}</TableCell>
-                      <TableCell align="left">{row.created}</TableCell>
-                      <TableCell align="left">{row.edited}</TableCell>
+                      <TableCell align="left">{row.lastName}</TableCell>
+                      <TableCell align="left">{row.avatar}</TableCell>
+                      <TableCell align="left">{row.role}</TableCell>
+                      <TableCell align="left">{row.lastLoggedIn}</TableCell>
+                      <TableCell align="left">{row.profileViews}</TableCell>
+                      <TableCell align="left">{row.age}</TableCell>
+                      <TableCell align="left">{row.country}</TableCell>
+                      <TableCell align="left">{row.city}</TableCell>
+                      <TableCell align="left">{row.address}</TableCell>
+                      <TableCell align="left">{row.phone}</TableCell>
+                      <TableCell align="left">{row.company}</TableCell>
+                      <TableCell align="left">
+                        {row.connections.length === 0 ? 'none' : row.connections.map((person) => person.fullName)}
+                      </TableCell>
                     </TableRow>
                   );
                 })}

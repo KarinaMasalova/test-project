@@ -3,7 +3,7 @@ import { lighten } from '@material-ui/core/styles';
 const textShadowColor = '#5d0021';
 const boxShadow = '0px 0px 23px -1px rgba(0,0,0,0.57)';
 
-const getPlanetsTableStyles = (theme) => ({
+const getLawyersTableStyles = (theme) => ({
   root: {
       width: '100%',
       boxShadow: `${boxShadow}`,
@@ -49,4 +49,4 @@ const getToolbarStyles = (theme) => ({
   },
 });
 
-export { getPlanetsTableStyles, getToolbarStyles };
+export { getLawyersTableStyles, getToolbarStyles };

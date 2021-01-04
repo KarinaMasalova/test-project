@@ -29,7 +29,7 @@ export default function EnhancedTableToolbar(props) {
           </Typography>
         ) : (
           <Typography className={classes.title} color="secondary" variant="h4" id="tableTitle" component="div">
-            Star War Planets
+            Our lawyers
           </Typography>
         )}
 

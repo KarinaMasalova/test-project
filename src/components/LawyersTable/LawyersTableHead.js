@@ -8,13 +8,19 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 export default function EnhancedTableHead(props) {
   const headCells = [
-    { id: 'name', numeric: false, disablePadding: false, label: 'Name' },
-    { id: 'diameter', numeric: true, disablePadding: false, label: 'Diameter' },
-    { id: 'climate', numeric: false, disablePadding: false, label: 'Climate' },
-    { id: 'terrain', numeric: false, disablePadding: false, label: 'Terrain' },
-    { id: 'population', numeric: true, disablePadding: false, label: 'Population' },
-    { id: 'created', numeric: false, disablePadding: false, label: 'Created' },
-    { id: 'edited', numeric: false, disablePadding: false, label: 'Edited' },
+    { id: 'firstname', disablePadding: false, label: 'Firstname' },
+    { id: 'lastname', disablePadding: false, label: 'Lastname' },
+    { id: 'avatar', disablePadding: false, label: 'Avatar' },
+    { id: 'role', disablePadding: false, label: 'Role' },
+    { id: 'lastLoggedIn', disablePadding: false, label: 'Last logged in' },
+    { id: 'profileViews', disablePadding: false, label: 'Profile views' },
+    { id: 'age', disablePadding: false, label: 'Age' },
+    { id: 'country', disablePadding: false, label: 'Country' },
+    { id: 'city', disablePadding: false, label: 'City' },
+    { id: 'address', disablePadding: false, label: 'Address' },
+    { id: 'phone', disablePadding: false, label: 'Phone number' },
+    { id: 'company', disablePadding: false, label: 'Company' },
+    { id: 'connections', disablePadding: false, label: 'Connections' },
   ];
 
   const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
@@ -30,7 +36,7 @@ export default function EnhancedTableHead(props) {
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
-            inputProps={{ 'aria-label': 'select all planets' }}
+            inputProps={{ 'aria-label': 'select all lawyers' }}
           />
         </TableCell>
         {headCells.map((headCell) => (

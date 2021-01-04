@@ -13,5 +13,5 @@
 
 .logo__img {
     height: 100%;
-    @include background($image: '../../img/logo.svg', $size: contain);
+    @include background($image: '../../img/favicon.png', $size: contain);
 }
