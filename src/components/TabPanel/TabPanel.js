@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+/* eslint-disable react/jsx-props-no-spreading */
 
-import getTabPanelStyles from './styles';
-import PlanetsTable from '../PlanetsTable/PlanetsTable';
+import React, { useState } from "react";
 
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
@@ -13,6 +12,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import PlanetsTable from '../PlanetsTable/PlanetsTable';
+import getTabPanelStyles from './styles';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -27,7 +28,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography component={'span'}>{children}</Typography>
+          <Typography component="span">{children}</Typography>
         </Box>
       )}
     </div>
@@ -35,9 +36,9 @@ function TabPanel(props) {
 }
 
 TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
+  children: PropTypes.node.isRequired,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
 };
 
 const a11yProps = (index) => {
@@ -96,7 +97,7 @@ export default function FullWidthTabs() {
       >
         <TabPanel value={value} index={0} dir={theme.direction}>Home</TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <PlanetsTable/>
+          <PlanetsTable />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>Charts</TabPanel>
       </SwipeableViews>

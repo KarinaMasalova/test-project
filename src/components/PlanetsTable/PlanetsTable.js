@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -16,26 +17,29 @@ import { getComparator, tableSort } from './sorting';
 import EnhancedTableHead from './PlanetsTableHead';
 import EnhancedTableToolbar from './PlanetsTableToolbar';
 
-let rows;
+import setAllPlanets from '../../store/planet/planet.actions';
 
-const loader = () => {
-  return loadPlanetData()
-    .then((data) => {
-      rows = data.results;
-    })
-    .catch((error) => console.log(error));
-};
-
-loader();
+const useStyles = makeStyles(getPlanetsTableStyles);
 
 export default function EnhancedTable() {
-  const useStyles = makeStyles(getPlanetsTableStyles);
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('');
   const [selected, setSelected] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  const isSelected = (name) => selected.indexOf(name) !== -1;
+
+  const getAllPlanets = (state) => state.allPlanetsReducer.allPlanets;
+  const rows = useSelector(getAllPlanets);
+
+  useEffect(() => {
+    loadPlanetData()
+      .then((data) => dispatch(setAllPlanets(data.results)))
+      .catch((error) => console.log(error));
+  }, []);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -78,8 +82,6 @@ export default function EnhancedTable() {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
-  const isSelected = (name) => selected.indexOf(name) !== -1;
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 

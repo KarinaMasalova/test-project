@@ -8,7 +8,6 @@ export default function getTheme() {
         palette: {
             type: prefersDarkMode ? 'dark' : 'light',
         },
-
     });
 
     return theme;

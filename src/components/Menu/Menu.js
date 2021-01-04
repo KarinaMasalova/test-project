@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 
 import './Menu.scss';
-import Switch from '../Switch/Switch';
-import getMenuStyles from './styles';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -10,10 +8,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import getMenuStyles from './styles';
+import Switch from '../Switch/Switch';
 
 const options = [
   'None',
-  <Switch/>,
+  <Switch />,
   'Callisto'
 ];
 

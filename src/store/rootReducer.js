@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import allPlanetsReducer from '../store/planet/planet.reducer';
+import allPlanetsReducer from "./planet/planet.reducer";
 
 const rootReducer = combineReducers({
     allPlanetsReducer

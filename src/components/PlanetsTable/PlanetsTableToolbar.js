@@ -15,7 +15,7 @@ export default function EnhancedTableToolbar(props) {
     const useStyles = makeStyles(getToolbarStyles);
     const classes = useStyles();
     const { numSelected } = props;
-  
+
     return (
       <Toolbar
         className={clsx(classes.root, {
@@ -24,14 +24,15 @@ export default function EnhancedTableToolbar(props) {
       >
         {numSelected > 0 ? (
           <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
-            {numSelected} selected
+            {numSelected}
+            selected
           </Typography>
         ) : (
-          <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
+          <Typography className={classes.title} color="secondary" variant="h4" id="tableTitle" component="div">
             Star War Planets
           </Typography>
         )}
-  
+
         {numSelected > 0 ? (
           <Tooltip title="Delete">
             <IconButton aria-label="delete">
@@ -47,8 +48,8 @@ export default function EnhancedTableToolbar(props) {
         )}
       </Toolbar>
     );
-  };
-  
+  }
+
 EnhancedTableToolbar.propTypes = {
     numSelected: PropTypes.number.isRequired,
 };

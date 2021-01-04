@@ -1,5 +1,5 @@
-import * as actionsTypes from './planet.actionTypes';
+import SET_ALL_PLANETS from './planet.actionTypes';
 
-const setAllPlanets = (payload) => ({ type: actionsTypes.SET_PROCESSES_LIST, payload });
+const setAllPlanets = (payload) => ({ type: SET_ALL_PLANETS, payload });
 
 export default setAllPlanets;

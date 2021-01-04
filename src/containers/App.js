@@ -12,15 +12,15 @@ import Main from './Main/Main';
 
 export default function App() {
     const theme = getTheme();
-    
+
     return (
-        <ThemeProvider theme={theme}>
-            <Paper style={{ height: "100vh" }}>
-                <Header />
-                <Switch>
-                    <Route path="/" component={Main} />
-                </Switch>
-            </Paper>
-        </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <Paper>
+          <Header />
+          <Switch>
+            <Route path="/" component={Main} />
+          </Switch>
+        </Paper>
+      </ThemeProvider>
     );
 }
