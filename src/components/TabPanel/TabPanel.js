@@ -62,9 +62,6 @@ export default function HeaderTabs() {
         changePath('/');
         break;
       case 1:
-        changePath('/lawyers');
-        break;
-      case 2:
         changePath('/charts');
         break;
       default: break;
