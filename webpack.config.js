@@ -6,6 +6,7 @@ module.exports = (env, options) => {
     const mode = debug ? 'development' : 'production';
     const config = {
         mode,
+        devtool: debug ? 'source-map' : 'none',
         watch: false,
         entry: "./src/index.js",
         output: {
@@ -16,7 +17,7 @@ module.exports = (env, options) => {
             historyApiFallback: true,
             contentBase: path.join(__dirname, "dist"),
             compress: true,
-            port: 3000,
+            port: 9000,
             watchContentBase: true,
             progress: true,
             liveReload: true,
@@ -52,10 +53,6 @@ module.exports = (env, options) => {
             })
         ]
     };
-
-    if (debug) {
-        config.devtool = 'source-map'
-    }
 
     return config;
 };
