@@ -4,15 +4,13 @@ import React, { useState } from "react";
 import { Link , useHistory } from "react-router-dom";
 
 import PropTypes from 'prop-types';
-import SwipeableViews from 'react-swipeable-views';
 
-import { useTheme, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import LawyersTable from '../LawyersTable/LawyersTable';
 import getTabPanelStyles from './styles';
 
 function TabPanel(props) {
@@ -51,9 +49,10 @@ const a11yProps = (index) => {
 export default function HeaderTabPanel() {
   const useStyles = makeStyles(getTabPanelStyles);
   const classes = useStyles();
-  const theme = useTheme();
   const history = useHistory();
   const [value, setValue] = useState(0);
+
+  const changePath = (path) => history.push(path);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -67,9 +66,6 @@ export default function HeaderTabPanel() {
       default: break;
     }
   }
-
-  const handleChangeIndex = (index) => setValue(index);
-  const changePath = (path) => history.push(path);
 
   return (
     <div className={classes.root}>
@@ -86,16 +82,6 @@ export default function HeaderTabPanel() {
           <Tab label={<Link to="/charts">Charts</Link>} {...a11yProps(1)} />
         </Tabs>
       </AppBar>
-      <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={value}
-        onChangeIndex={handleChangeIndex}
-      >
-        <TabPanel value={value} index={0} dir={theme.direction}>
-          <LawyersTable />
-        </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>Charts</TabPanel>
-      </SwipeableViews>
     </div>
   );
 }

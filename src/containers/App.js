@@ -8,7 +8,8 @@ import getTheme from '../utils/theme';
 
 import './App.scss';
 import Header from './Header/Header';
-import Main from './Main/Main';
+import LawyersOverview from './Main/LawyersOverview/LawyersOverview';
+import ChartsOverview from './Main/ChartsOverview/ChartsOverview';
 
 export default function App() {
     const theme = getTheme();
@@ -18,7 +19,8 @@ export default function App() {
         <Paper>
           <Header />
           <Switch>
-            <Route path="/" component={Main} />
+            <Route path="/charts" component={ChartsOverview} />
+            <Route path="/" component={LawyersOverview} />
           </Switch>
         </Paper>
       </ThemeProvider>
