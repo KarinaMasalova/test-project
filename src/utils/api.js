@@ -1,7 +1,7 @@
-const url = 'https://5ff1d38edb1158001748b5c2.mockapi.io/api/v1/users/';
+import * as constants from '../constants/constants';
 
 const loadLawyersData = () => {
-    return fetch(url)
+    return fetch(constants.url)
         .then((data) => data.json())
         .catch((error) => console.log(error));
 }

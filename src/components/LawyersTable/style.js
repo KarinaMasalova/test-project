@@ -1,12 +1,10 @@
 import { lighten } from '@material-ui/core/styles';
-
-const textShadowColor = '#5d0021';
-const boxShadow = '0px 0px 23px -1px rgba(0,0,0,0.57)';
+import * as constants from '../../constants/constants';
 
 const getLawyersTableStyles = (theme) => ({
   root: {
       width: '100%',
-      boxShadow: `${boxShadow}`,
+      boxShadow: `${constants.boxShadow}`,
   },
   paper: {
       width: '100%',
@@ -45,7 +43,7 @@ const getToolbarStyles = (theme) => ({
         },
   title: {
     flex: '1 1 100%',
-    textShadow: `${textShadowColor} 1px 0 10px`,
+    textShadow: `${constants.textShadowColor} 1px 0 10px`,
   },
 });
 
