@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from 'react-router-dom';
+import SwipeableRoutes from "react-swipeable-routes";
 
 import { Paper } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -16,12 +17,14 @@ export default function App() {
 
     return (
       <ThemeProvider theme={theme}>
-        <Paper>
+        <Paper square>
           <Header />
-          <Switch>
+          <SwipeableRoutes>
+            {/* <Switch> */}
             <Route path="/charts" component={ChartsOverview} />
             <Route path="/" component={LawyersOverview} />
-          </Switch>
+            {/* </Switch> */}
+          </SwipeableRoutes>
         </Paper>
       </ThemeProvider>
     );
