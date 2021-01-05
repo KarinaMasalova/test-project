@@ -11,7 +11,7 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 
 import { getToolbarStyles } from './style';
 
-export default function EnhancedTableToolbar(props) {
+export default function LawyersTableToolbar(props) {
     const useStyles = makeStyles(getToolbarStyles);
     const classes = useStyles();
     const { numSelected } = props;
@@ -50,6 +50,6 @@ export default function EnhancedTableToolbar(props) {
     );
   }
 
-EnhancedTableToolbar.propTypes = {
+LawyersTableToolbar.propTypes = {
     numSelected: PropTypes.number.isRequired,
 };

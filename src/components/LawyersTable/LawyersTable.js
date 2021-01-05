@@ -15,7 +15,7 @@ import { getLawyersTableStyles } from './style';
 import loadLawyersData from '../../utils/api';
 import { getComparator, tableSort } from './sorting';
 import LawyersTableHead from './LawyersTableHead';
-import EnhancedTableToolbar from './LawyersTableToolbar';
+import LawyersTableToolbar from './LawyersTableToolbar';
 
 import setAllLawyers from '../../store/lawyers/lawyers.actions';
 
@@ -89,7 +89,7 @@ export default function LawyersTable() {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <LawyersTableToolbar numSelected={selected.length} />
         <TableContainer>
           <Table
             className={classes.table}
