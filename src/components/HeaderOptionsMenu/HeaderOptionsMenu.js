@@ -13,7 +13,7 @@ const options = [
   <Switch />
 ];
 
-export default function LongMenu() {
+export default function HeaderOptionsMenu() {
   const useStyles = makeStyles(getMenuStyles);
   const classes = useStyles();
 
@@ -21,7 +21,6 @@ export default function LongMenu() {
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => setAnchorEl(event.currentTarget);
-
   const handleClose = () => setAnchorEl(null);
 
   return (
@@ -43,7 +42,7 @@ export default function LongMenu() {
         PaperProps={{className: classes.style}}
       >
         {options.map((option) => (
-          <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose} paperprops={{className: classes.style}}>
+          <MenuItem key={option} selected={option === 'Pyxis'} paperprops={{className: classes.style}}>
             {option}
           </MenuItem>
         ))}
