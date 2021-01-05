@@ -6,23 +6,9 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-export default function EnhancedTableHead(props) {
-  const headCells = [
-    { id: 'firstname', disablePadding: false, label: 'Firstname' },
-    { id: 'lastname', disablePadding: false, label: 'Lastname' },
-    { id: 'avatar', disablePadding: false, label: 'Avatar' },
-    { id: 'role', disablePadding: false, label: 'Role' },
-    { id: 'lastLoggedIn', disablePadding: false, label: 'Last logged in' },
-    { id: 'profileViews', disablePadding: false, label: 'Profile views' },
-    { id: 'age', disablePadding: false, label: 'Age' },
-    { id: 'country', disablePadding: false, label: 'Country' },
-    { id: 'city', disablePadding: false, label: 'City' },
-    { id: 'address', disablePadding: false, label: 'Address' },
-    { id: 'phone', disablePadding: false, label: 'Phone number' },
-    { id: 'company', disablePadding: false, label: 'Company' },
-    { id: 'connections', disablePadding: false, label: 'Connections' },
-  ];
+import * as constants from '../../constants/constants';
 
+export default function LawyersTableHead(props) {
   const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
@@ -39,7 +25,7 @@ export default function EnhancedTableHead(props) {
             inputProps={{ 'aria-label': 'select all lawyers' }}
           />
         </TableCell>
-        {headCells.map((headCell) => (
+        {constants.headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
             padding={headCell.disablePadding ? 'none' : 'default'}
@@ -64,7 +50,7 @@ export default function EnhancedTableHead(props) {
   );
 }
 
-EnhancedTableHead.propTypes = {
+LawyersTableHead.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   classes: PropTypes.object.isRequired,
   numSelected: PropTypes.number.isRequired,
