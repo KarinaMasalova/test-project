@@ -14,14 +14,14 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { getLawyersTableStyles } from './style';
 import loadLawyersData from '../../utils/api';
 import { getComparator, tableSort } from './sorting';
-import EnhancedTableHead from './LawyersTableHead';
+import LawyersTableHead from './LawyersTableHead';
 import EnhancedTableToolbar from './LawyersTableToolbar';
 
 import setAllLawyers from '../../store/lawyers/lawyers.actions';
 
 const useStyles = makeStyles(getLawyersTableStyles);
 
-export default function EnhancedTable() {
+export default function LawyersTable() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const [order, setOrder] = useState('asc');
@@ -30,7 +30,7 @@ export default function EnhancedTable() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const isSelected = (name) => selected.indexOf(name) !== -1;
+  const isSelected = (name) => selected.findIndex((selectedValue) => name === selectedValue) !== -1;
 
   const getAllLawyers = (state) => state.allLawyersReducer.allLawyers;
   const rows = useSelector(getAllLawyers);
@@ -49,7 +49,7 @@ export default function EnhancedTable() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.name);
+      const newSelecteds = rows.map((n) => n.firstName);
       setSelected(newSelecteds);
       return;
     }
@@ -57,7 +57,7 @@ export default function EnhancedTable() {
   };
 
   const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
+    const selectedIndex = selected.findIndex((selectedValue) => selectedValue === name);
     let newSelected = [];
 
     if (selectedIndex === -1) {
@@ -95,7 +95,7 @@ export default function EnhancedTable() {
             aria-labelledby="tableTitle"
             aria-label="enhanced table"
           >
-            <EnhancedTableHead
+            <LawyersTableHead
               classes={classes}
               numSelected={selected.length}
               order={order}
@@ -108,13 +108,13 @@ export default function EnhancedTable() {
               {tableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.name);
+                  const isItemSelected = isSelected(row.firstName);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.name)}
+                      onClick={(event) => handleClick(event, row.firstName)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
