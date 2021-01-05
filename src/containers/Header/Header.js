@@ -2,9 +2,8 @@ import React from "react";
 
 import './Header.scss';
 
-import Menu from '../../components/HeaderOptionsMenu/HeaderOptionsMenu';
-
-import Tabs from "../../components/TabPanel/TabPanel";
+import HeaderOptionsMenu from '../../components/HeaderOptionsMenu/HeaderOptionsMenu';
+import HeaderTabPanel from "../../components/HeaderTabPanel/HeaderTabPanel";
 
 export default function Header() {
     return (
@@ -12,8 +11,8 @@ export default function Header() {
         <div className="logo">
           <span className="logo__img" />
         </div>
-        <Tabs />
-        <Menu />
+        <HeaderTabPanel />
+        <HeaderOptionsMenu />
       </header>
     );
 }

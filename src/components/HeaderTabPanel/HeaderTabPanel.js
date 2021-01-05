@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React, { useState } from "react";
+import { Link , useHistory } from "react-router-dom";
 
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
-import { useHistory } from 'react-router-dom';
 
 import { useTheme, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -48,7 +48,7 @@ const a11yProps = (index) => {
   };
 }
 
-export default function HeaderTabs() {
+export default function HeaderTabPanel() {
   const useStyles = makeStyles(getTabPanelStyles);
   const classes = useStyles();
   const theme = useTheme();
@@ -82,8 +82,8 @@ export default function HeaderTabs() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="Lawyers" {...a11yProps(0)} />
-          <Tab label="Charts" {...a11yProps(1)} />
+          <Tab label={<Link to="/">Lawyers</Link>} {...a11yProps(0)} />
+          <Tab label={<Link to="/charts">Charts</Link>} {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
