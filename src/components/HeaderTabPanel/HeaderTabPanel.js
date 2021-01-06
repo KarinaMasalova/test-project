@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from "react";
-import { Link , useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -43,8 +43,8 @@ export default function HeaderTabPanel() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label={<Link to="/">Lawyers</Link>} {...tabProps(constants.LAWYERS_KEY)} />
-          <Tab label={<Link to="/charts">Charts</Link>} {...tabProps(constants.CHARTS_KEY)} />
+          <Tab label="lawyers" {...tabProps(constants.LAWYERS_KEY)} />
+          <Tab label="charts" {...tabProps(constants.CHARTS_KEY)} />
         </Tabs>
       </AppBar>
     </div>
