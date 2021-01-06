@@ -1,34 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 
 import Typography from '@material-ui/core/Typography';
 import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
 import { Switch as Toggle } from '@material-ui/core';
-import getTheme from '../../utils/theme';
+
+import Context from '../../utils/context';
 
 export default function Switch() {
-    const theme = getTheme();
-    const machineMode = (theme.palette.type === 'dark') ? true : false;
-
-    const [darkMode, setDarkMode] = useState(machineMode);
-
-    // console.log('machineMode '+ machineMode);
-    // console.log('darkMode ' + darkMode);
-
-    useEffect(() => {
-        const mode = localStorage.getItem('isDarkMode');
-        if (mode) {
-            mode ? setDarkMode(true) : setDarkMode(false);
-        } else {
-            localStorage.setItem('isDarkMode', machineMode);
-            setDarkMode(machineMode);
-        }
-    }, [machineMode]);
-
-    const handleThemeChange = () => {
-        setDarkMode(!darkMode);
-        localStorage.setItem('isDarkMode', !darkMode);
-    };
+    const { darkMode, switchMode } = useContext(Context);
 
     return (
       <FormGroup>
@@ -38,7 +18,7 @@ export default function Switch() {
             <Grid item>
               <Toggle
                 checked={darkMode}
-                onChange={handleThemeChange}
+                onChange={switchMode}
               />
             </Grid>
             <Grid item>Dark</Grid>
