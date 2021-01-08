@@ -18,6 +18,7 @@ import LawyersTableHead from './LawyersTableHead';
 import LawyersTableToolbar from './LawyersTableToolbar';
 
 import setAllLawyers from '../../store/lawyers/lawyers.actions';
+import setErrorSnackbar from '../../store/errorSnackbar/errorSnackbar.actions';
 
 const useStyles = makeStyles(getLawyersTableStyles);
 
@@ -37,8 +38,11 @@ export default function LawyersTable() {
 
   useEffect(() => {
     loadLawyersData()
-      .then((data) => dispatch(setAllLawyers(data)))
-      .catch((error) => console.log(error));
+      .then((data) =>  dispatch(setAllLawyers(data)))
+      .catch((error) => {
+        Promise.reject(error);
+        dispatch(setErrorSnackbar(true));
+      });
   }, []);
 
   const handleRequestSort = (event, property) => {

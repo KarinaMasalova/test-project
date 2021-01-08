@@ -12,6 +12,7 @@ import './App.scss';
 import Header from './Header/Header';
 import LawyersOverview from './Main/LawyersOverview/LawyersOverview';
 import ChartsOverview from './Main/ChartsOverview/ChartsOverview';
+import ErrorSnackbar from '../components/ErrorSnackbar/ErrorSnackbar';
 
 export default function App() {
   const theme = getTheme();
@@ -43,6 +44,7 @@ export default function App() {
             <Route exact path="/charts" component={ChartsOverview} />
             <Route exact path="/" component={LawyersOverview} />
           </SwipeableRoutes>
+          <ErrorSnackbar />
         </Paper>
       </Context.Provider>
     </ThemeProvider>

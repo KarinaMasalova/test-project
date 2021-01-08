@@ -1,0 +1,3 @@
+const SET_ERROR_SNACKBAR = 'SET_ERROR_SNACKBAR';
+
+export default SET_ERROR_SNACKBAR;
