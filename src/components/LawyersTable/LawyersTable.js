@@ -19,6 +19,7 @@ import LawyersTableToolbar from './LawyersTableToolbar';
 
 import setAllLawyers from '../../store/lawyers/lawyers.actions';
 import setErrorSnackbar from '../../store/errorSnackbar/errorSnackbar.actions';
+import setFilteredLawyers from '../../store/filteredLawyers/filteredLawyers.actions';
 
 const useStyles = makeStyles(getLawyersTableStyles);
 
@@ -33,12 +34,15 @@ export default function LawyersTable() {
 
   const isSelected = (name) => selected.findIndex((selectedValue) => name === selectedValue) !== -1;
 
-  const getAllLawyers = (state) => state.allLawyersReducer.allLawyers;
-  const rows = useSelector(getAllLawyers);
+  const getFilteredLawyers = (state) => state.filteredLawyersReducer.filteredLawyers;
+  const rows = useSelector(getFilteredLawyers);
 
   useEffect(() => {
     loadLawyersData()
-      .then((data) =>  dispatch(setAllLawyers(data)))
+      .then((data) =>  {
+        dispatch(setAllLawyers(data));
+        dispatch(setFilteredLawyers(data));
+      })
       .catch((error) => {
         Promise.reject(error);
         dispatch(setErrorSnackbar(true));

@@ -12,43 +12,43 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import { getToolbarStyles } from './style';
 
 export default function LawyersTableToolbar(props) {
-    const useStyles = makeStyles(getToolbarStyles);
-    const classes = useStyles();
-    const { numSelected } = props;
+  const useStyles = makeStyles(getToolbarStyles);
+  const classes = useStyles();
+  const { numSelected } = props;
 
-    return (
-      <Toolbar
-        className={clsx(classes.root, {
-          [classes.highlight]: numSelected > 0,
-        })}
-      >
-        {numSelected > 0 ? (
-          <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
-            {numSelected}
-            selected
-          </Typography>
-        ) : (
-          <Typography className={classes.title} color="secondary" variant="h4" id="tableTitle" component="div">
-            Our lawyers
-          </Typography>
-        )}
+  return (
+    <Toolbar
+      className={clsx(classes.root, {
+        [classes.highlight]: numSelected > 0,
+      })}
+    >
+      {numSelected > 0 ? (
+        <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
+          {numSelected}
+          selected
+        </Typography>
+      ) : (
+        <Typography className={classes.title} color="secondary" variant="h4" id="tableTitle" component="div">
+          Our lawyers
+        </Typography>
+      )}
 
-        {numSelected > 0 ? (
-          <Tooltip title="Delete">
-            <IconButton aria-label="delete">
-              <DeleteIcon />
-            </IconButton>
-          </Tooltip>
-        ) : (
-          <Tooltip title="Filter list">
-            <IconButton aria-label="filter list">
-              <FilterListIcon />
-            </IconButton>
-          </Tooltip>
-        )}
-      </Toolbar>
-    );
-  }
+      {numSelected > 0 ? (
+        <Tooltip title="Delete">
+          <IconButton aria-label="delete">
+            <DeleteIcon />
+          </IconButton>
+        </Tooltip>
+      ) : (
+        <Tooltip title="Filter list">
+          <IconButton aria-label="filter list">
+            <FilterListIcon />
+          </IconButton>
+        </Tooltip>
+      )}
+    </Toolbar>
+  );
+}
 
 LawyersTableToolbar.propTypes = {
     numSelected: PropTypes.number.isRequired,
