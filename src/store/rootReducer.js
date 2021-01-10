@@ -1,15 +1,15 @@
 import { combineReducers } from 'redux';
 
-import allLawyersReducer from "./lawyers/lawyers.reducer";
+import allPeopleReducer from "./people/people.reducer";
 import errorSnackbarReducer from './errorSnackbar/errorSnackbar.reducer';
 import valueFromSelectReducer from './valueFromSelect/valueFromSelect.reducer';
-import filteredLawyersReducer from './filteredLawyers/filteredLawyers.reducer';
+import filteredPeopleReducer from './filteredPeople/filteredPeople.reducer';
 
 const rootReducer = combineReducers({
-    allLawyersReducer,
+    allPeopleReducer,
     errorSnackbarReducer,
     valueFromSelectReducer,
-    filteredLawyersReducer
+    filteredPeopleReducer
 });
 
 export default rootReducer;

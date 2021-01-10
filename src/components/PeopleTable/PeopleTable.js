@@ -11,19 +11,19 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import { getLawyersTableStyles } from './style';
-import loadLawyersData from '../../utils/api';
+import { getPeopleTableStyles } from './style';
+import loadPeopleData from '../../utils/api';
 import { getComparator, tableSort } from './sorting';
-import LawyersTableHead from './LawyersTableHead';
-import LawyersTableToolbar from './LawyersTableToolbar';
+import PeopleTableHead from './PeopleTableHead';
+import PeopleTableToolbar from './PeopleTableToolbar';
 
-import setAllLawyers from '../../store/lawyers/lawyers.actions';
+import setAllPeople from '../../store/people/people.actions';
 import setErrorSnackbar from '../../store/errorSnackbar/errorSnackbar.actions';
-import setFilteredLawyers from '../../store/filteredLawyers/filteredLawyers.actions';
+import setFilteredPeople from '../../store/filteredPeople/filteredPeople.actions';
 
-const useStyles = makeStyles(getLawyersTableStyles);
+const useStyles = makeStyles(getPeopleTableStyles);
 
-export default function LawyersTable() {
+export default function PeopleTable() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const [order, setOrder] = useState('asc');
@@ -34,14 +34,14 @@ export default function LawyersTable() {
 
   const isSelected = (name) => selected.findIndex((selectedValue) => name === selectedValue) !== -1;
 
-  const getFilteredLawyers = (state) => state.filteredLawyersReducer.filteredLawyers;
-  const rows = useSelector(getFilteredLawyers);
+  const getFilteredPeople = (state) => state.filteredPeopleReducer.filteredPeople;
+  const rows = useSelector(getFilteredPeople);
 
   useEffect(() => {
-    loadLawyersData()
+    loadPeopleData()
       .then((data) =>  {
-        dispatch(setAllLawyers(data));
-        dispatch(setFilteredLawyers(data));
+        dispatch(setAllPeople(data));
+        dispatch(setFilteredPeople(data));
       })
       .catch((error) => {
         Promise.reject(error);
@@ -97,14 +97,14 @@ export default function LawyersTable() {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <LawyersTableToolbar numSelected={selected.length} />
+        <PeopleTableToolbar numSelected={selected.length} />
         <TableContainer>
           <Table
             className={classes.table}
             aria-labelledby="tableTitle"
             aria-label="enhanced table"
           >
-            <LawyersTableHead
+            <PeopleTableHead
               classes={classes}
               numSelected={selected.length}
               order={order}

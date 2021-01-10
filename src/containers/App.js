@@ -10,7 +10,7 @@ import Context from '../utils/context';
 
 import './App.scss';
 import Header from './Header/Header';
-import LawyersOverview from './Main/LawyersOverview/LawyersOverview';
+import PeopleOverview from './Main/PeopleOverview/PeopleOverview';
 import ChartsOverview from './Main/ChartsOverview/ChartsOverview';
 import ErrorSnackbar from '../components/ErrorSnackbar/ErrorSnackbar';
 
@@ -42,7 +42,7 @@ export default function App() {
           <Header />
           <SwipeableRoutes>
             <Route exact path="/charts" component={ChartsOverview} />
-            <Route exact path="/" component={LawyersOverview} />
+            <Route exact path="/" component={PeopleOverview} />
           </SwipeableRoutes>
           <ErrorSnackbar />
         </Paper>

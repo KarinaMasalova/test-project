@@ -8,7 +8,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 import * as constants from '../../constants/constants';
 
-export default function LawyersTableHead(props) {
+export default function PeopleTableHead(props) {
   const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
@@ -22,7 +22,7 @@ export default function LawyersTableHead(props) {
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
-            inputProps={{ 'aria-label': 'select all lawyers' }}
+            inputProps={{ 'aria-label': 'select all people' }}
           />
         </TableCell>
         {constants.headCells.map((headCell) => (
@@ -50,7 +50,7 @@ export default function LawyersTableHead(props) {
   );
 }
 
-LawyersTableHead.propTypes = {
+PeopleTableHead.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   classes: PropTypes.object.isRequired,
   numSelected: PropTypes.number.isRequired,

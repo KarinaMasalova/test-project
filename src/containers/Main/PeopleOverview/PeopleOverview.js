@@ -4,21 +4,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
 
 import '../Main.scss';
-import getLawyersOverviewStyles from './style';
+import getPeopleOverviewStyles from './style';
 import Select from '../../../components/Common/Select/Select';
 import Input from '../../../components/Common/Input/Input';
 import Button from '../../../components/Common/Button/Button';
-import LawyersTable from '../../../components/LawyersTable/LawyersTable';
-import setFilteredLawyers from '../../../store/filteredLawyers/filteredLawyers.actions';
+import PeopleTable from '../../../components/PeopleTable/PeopleTable';
+import setFilteredPeople from '../../../store/filteredPeople/filteredPeople.actions';
 
-const useStyles = makeStyles(getLawyersOverviewStyles);
+const useStyles = makeStyles(getPeopleOverviewStyles);
 
-export default function LawyersOverview() {
+export default function PeopleOverview() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const getAllLawyers = (state) => state.allLawyersReducer.allLawyers;
-  const data = useSelector(getAllLawyers);
+  const getAllPeople = (state) => state.allPeopleReducer.allPeople;
+  const data = useSelector(getAllPeople);
 
   const getValueFromSelect = (state) => state.valueFromSelectReducer.valueFromSelect;
   const valueFromSelect = useSelector(getValueFromSelect);
@@ -29,7 +29,7 @@ export default function LawyersOverview() {
       .toString()
       .toLowerCase()
       .includes(event.target.value.toLowerCase()));
-    dispatch(setFilteredLawyers(filteredData));
+    dispatch(setFilteredPeople(filteredData));
   }
 
   return (
@@ -40,7 +40,7 @@ export default function LawyersOverview() {
         <Button variant="contained" color="secondary" value="Search" />
         <Button variant="outlined" color="secondary" value="Reset filters" />
       </div>
-      <LawyersTable />
+      <PeopleTable />
     </main>
   );
 }

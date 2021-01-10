@@ -1,7 +1,7 @@
 import { lighten } from '@material-ui/core/styles';
 import * as constants from '../../constants/constants';
 
-const getLawyersTableStyles = (theme) => ({
+const getPeopleTableStyles = (theme) => ({
   root: {
       width: '100%',
       boxShadow: `${constants.boxShadow}`,
@@ -47,4 +47,4 @@ const getToolbarStyles = (theme) => ({
   },
 });
 
-export { getLawyersTableStyles, getToolbarStyles };
+export { getPeopleTableStyles, getToolbarStyles };

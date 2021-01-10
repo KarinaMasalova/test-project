@@ -16,5 +16,5 @@ export const headCells = [
     { id: 'company', disablePadding: false, label: 'Company' },
     { id: 'connections', disablePadding: false, label: 'Connections' },
 ];
-export const LAWYERS_KEY = 'lawyers';
+export const PEOPLE_KEY = 'people';
 export const CHARTS_KEY = 'charts';

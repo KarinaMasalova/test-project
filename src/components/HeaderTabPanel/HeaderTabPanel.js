@@ -43,7 +43,7 @@ export default function HeaderTabPanel() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="lawyers" {...tabProps(constants.LAWYERS_KEY)} />
+          <Tab label="people" {...tabProps(constants.PEOPLE_KEY)} />
           <Tab label="charts" {...tabProps(constants.CHARTS_KEY)} />
         </Tabs>
       </AppBar>

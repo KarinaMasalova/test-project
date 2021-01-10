@@ -11,7 +11,7 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 
 import { getToolbarStyles } from './style';
 
-export default function LawyersTableToolbar(props) {
+export default function PeopleTableToolbar(props) {
   const useStyles = makeStyles(getToolbarStyles);
   const classes = useStyles();
   const { numSelected } = props;
@@ -29,7 +29,7 @@ export default function LawyersTableToolbar(props) {
         </Typography>
       ) : (
         <Typography className={classes.title} color="secondary" variant="h4" id="tableTitle" component="div">
-          Our lawyers
+          Our people
         </Typography>
       )}
 
@@ -50,6 +50,6 @@ export default function LawyersTableToolbar(props) {
   );
 }
 
-LawyersTableToolbar.propTypes = {
+PeopleTableToolbar.propTypes = {
     numSelected: PropTypes.number.isRequired,
 };
