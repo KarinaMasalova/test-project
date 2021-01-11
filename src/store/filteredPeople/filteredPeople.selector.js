@@ -1,3 +1,2 @@
-const getFilteredPeople = (state) => state.filteredPeopleReducer.filteredPeople;
-
-export default getFilteredPeople;
+export const getFilteredByNamePeople = (state) => state.filteredPeopleReducer.filteredByNamePeople;
+export const getFilteredByLocationPeople = (state) => state.filteredPeopleReducer.filteredByLocationPeople;

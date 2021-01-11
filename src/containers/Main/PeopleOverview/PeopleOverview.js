@@ -10,10 +10,10 @@ import Input from '../../../components/Common/Input/Input';
 import Button from '../../../components/Common/Button/Button';
 import PeopleTable from '../../../components/PeopleTable/PeopleTable';
 
-import setFilteredPeople from '../../../store/filteredPeople/filteredPeople.actions';
+import * as filteredPeopleActions from '../../../store/filteredPeople/filteredPeople.actions';
 import setValueFromSelect from '../../../store/valueFromSelect/valueFromSelect.actions';
 import getAllPeople from '../../../store/people/people.selector';
-import getValueFromSelect from '../../../store/valueFromSelect/valueFromSelect.selector';
+import * as filteredPeopleSelectors from '../../../store/filteredPeople/filteredPeople.selector';
 import * as constants from '../../../constants/constants';
 
 const useStyles = makeStyles(getPeopleOverviewStyles);
@@ -22,37 +22,34 @@ export default function PeopleOverview() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const data = useSelector(getAllPeople);
-  const valueFromSelect = useSelector(getValueFromSelect);
+  const filteredByNameData = useSelector(filteredPeopleSelectors.getFilteredByNamePeople);
 
-  const options = [
-    "None",
-    "Firstname",
-    "Lastname",
-    "Role",
-    "Country",
-    "City",
-    "Age"
-  ]
+  const handleSelectAgeChange = (e) => dispatch(setValueFromSelect(constants.headCells.filter((obj) => obj.label === e.target.value)[0]));
 
-  const handleSelectChange = (e) => dispatch(setValueFromSelect(constants.headCells.filter((obj) => obj.label === e.target.value)[0]));
+  const handleInputNameChange = (e) => {
+    e.preventDefault();
+    const filteredByNameData = data.filter((obj) => obj.firstName.toLowerCase().includes(e.target.value.toLowerCase()) ||
+      obj.lastName.toLowerCase().includes(e.target.value.toLowerCase()));
+    dispatch(filteredPeopleActions.setFilteredByNamePeople(filteredByNameData));
+    dispatch(filteredPeopleActions.setFilteredByLocationPeople(filteredByNameData));
+  }
 
-  const handleInputChange = (event, field) => {
-    event.preventDefault();
-    const filteredData = data.filter((obj) => obj[field]
-      .toString()
-      .toLowerCase()
-      .includes(event.target.value.toLowerCase()));
-    dispatch(setFilteredPeople(filteredData));
+  const handleInputLocationChange = (e) => {
+    e.preventDefault();
+    const filteredByLocationData = filteredByNameData.filter((obj) => obj.city.toLowerCase().includes(e.target.value.toLowerCase()) ||
+      obj.country.toLowerCase().includes(e.target.value.toLowerCase()));
+    dispatch(filteredPeopleActions.setFilteredByLocationPeople(filteredByLocationData));
   }
 
   return (
     <main className="main">
+      <Input onChange={handleInputNameChange} label="Enter firstname / lastname..." />
+      <Input onChange={handleInputLocationChange} label="Enter country / city..." />
       <div className={classes.root}>
-        <Select options={options} onChange={handleSelectChange} />
-        <Input onChange={(e) => handleInputChange(e, valueFromSelect.id)} />
-        <Button variant="contained" color="secondary" value="Search" />
-        <Button variant="outlined" color="secondary" value="Reset filters" />
+        <Select options={constants.ageOptions} onChange={handleSelectAgeChange} label="Select age..." />
+        <Select options={constants.roleOptions} onChange={handleSelectAgeChange} label="Select role..." />
       </div>
+      <Button variant="outlined" color="secondary" value="Reset filters" />
       <PeopleTable />
     </main>
   );

@@ -10,13 +10,13 @@ const useStyles = makeStyles(getInputStyles);
 
 export default function Input(props) {
   const classes = useStyles();
-  const { onChange } = props;
+  const { onChange, label } = props;
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
       <TextField
-        id="outlined-search"
-        label="Search..."
+        id={label}
+        label={label}
         type="search"
         variant="outlined"
         color="secondary"
@@ -27,5 +27,6 @@ export default function Input(props) {
 }
 
 Input.propTypes = {
-    onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired
 };

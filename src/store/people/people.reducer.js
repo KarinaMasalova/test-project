@@ -2,7 +2,7 @@ const initialState = {
     allPeople: []
 };
 
-export default function alPeopleReducer(state = initialState, action) {
+export default function allPeopleReducer(state = initialState, action) {
     switch(action.type) {
         case "SET_ALL_PEOPLE":
             return {

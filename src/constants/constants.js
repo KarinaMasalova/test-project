@@ -18,3 +18,14 @@ export const headCells = [
 ];
 export const PEOPLE_KEY = 'people';
 export const CHARTS_KEY = 'charts';
+export const ageOptions = [
+    "< 18",
+    "< 25",
+    "< 35",
+    "< 50",
+    "< 100"
+];
+export const roleOptions = [
+    "lawyer",
+    "client"
+];

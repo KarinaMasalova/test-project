@@ -19,8 +19,8 @@ import PeopleTableToolbar from './PeopleTableToolbar';
 
 import setAllPeople from '../../store/people/people.actions';
 import setErrorSnackbar from '../../store/errorSnackbar/errorSnackbar.actions';
-import setFilteredPeople from '../../store/filteredPeople/filteredPeople.actions';
-import getFilteredPeople from '../../store/filteredPeople/filteredPeople.selector';
+import * as filteredPeopleActions from '../../store/filteredPeople/filteredPeople.actions';
+import * as filteredPeopleSelectors from '../../store/filteredPeople/filteredPeople.selector';
 
 const useStyles = makeStyles(getPeopleTableStyles);
 
@@ -32,7 +32,7 @@ export default function PeopleTable() {
   const [selected, setSelected] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const rows = useSelector(getFilteredPeople);
+  const rows = useSelector(filteredPeopleSelectors.getFilteredByNamePeople);
 
   const isSelected = (name) => selected.findIndex((selectedValue) => name === selectedValue) !== -1;
 
@@ -40,7 +40,7 @@ export default function PeopleTable() {
     loadPeopleData()
       .then((data) =>  {
         dispatch(setAllPeople(data));
-        dispatch(setFilteredPeople(data));
+        dispatch(filteredPeopleActions.setFilteredByNamePeople(data));
       })
       .catch((error) => {
         Promise.reject(error);
