@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import setErrorSnackbar from '../../store/errorSnackbar/errorSnackbar.actions';
 import getErrorSnackbarStyles from './style';
+import getErrorSnackbarState from '../../store/errorSnackbar/errorSnackbar.selector';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -17,8 +18,6 @@ export default function ErrorSnackbar() {
   const dispatch = useDispatch();
   const useStyles = makeStyles(getErrorSnackbarStyles);
   const classes = useStyles();
-
-  const getErrorSnackbarState = (state) => state.errorSnackbarReducer.isErrorSnackbarOpened;
   const isSnackbarOpened = useSelector(getErrorSnackbarState);
 
   const handleClose = (event, reason) => {
