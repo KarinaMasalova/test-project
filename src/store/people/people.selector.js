@@ -1,3 +1,2 @@
-const getAllPeople = (state) => state.allPeopleReducer.allPeople;
-
-export default getAllPeople;
+export const getAllPeople = (state) => state.peopleReducer.allPeople;
+export const getFilteredPeople = (state) => state.peopleReducer.filteredPeople;

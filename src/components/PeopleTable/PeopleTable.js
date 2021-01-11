@@ -17,10 +17,9 @@ import { getComparator, tableSort } from './sorting';
 import PeopleTableHead from './PeopleTableHead';
 import PeopleTableToolbar from './PeopleTableToolbar';
 
-import setAllPeople from '../../store/people/people.actions';
+import { setAllPeople, setFilteredPeople } from '../../store/people/people.actions';
+import { getFilteredPeople } from '../../store/people/people.selector';
 import setErrorSnackbar from '../../store/errorSnackbar/errorSnackbar.actions';
-import getFilteredPeople from '../../store/filteredPeople/filteredPeople.selector';
-import setFilteredPeople from '../../store/filteredPeople/filteredPeople.actions';
 
 const useStyles = makeStyles(getPeopleTableStyles);
 

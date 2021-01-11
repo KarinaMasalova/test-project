@@ -10,10 +10,10 @@ import Input from '../../../components/Common/Input/Input';
 import Button from '../../../components/Common/Button/Button';
 import PeopleTable from '../../../components/PeopleTable/PeopleTable';
 
-import setFilteredPeople from '../../../store/filteredPeople/filteredPeople.actions';
+import { setFilteredPeople } from '../../../store/people/people.actions';
 import setValueFromSelect from '../../../store/valueFromSelect/valueFromSelect.actions';
 import * as constants from '../../../constants/constants';
-import getAllPeople from '../../../store/people/people.selector';
+import { getAllPeople } from '../../../store/people/people.selector';
 
 const useStyles = makeStyles(getPeopleOverviewStyles);
 

@@ -1,5 +1,4 @@
-import SET_ALL_PEOPLE from './people.actionTypes';
+import * as actionTypes from './people.actionTypes';
 
-const setAllPeople = (payload) => ({ type: SET_ALL_PEOPLE, payload });
-
-export default setAllPeople;
+export const setAllPeople = (payload) => ({ type: actionTypes.SET_ALL_PEOPLE, payload });
+export const setFilteredPeople = (data) => ({ type: actionTypes.SET_FILTERED_PEOPLE, payload: data });
