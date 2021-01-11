@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -12,8 +12,6 @@ import PeopleTable from '../../../components/PeopleTable/PeopleTable';
 
 import * as filteredPeopleActions from '../../../store/filteredPeople/filteredPeople.actions';
 import setValueFromSelect from '../../../store/valueFromSelect/valueFromSelect.actions';
-import getAllPeople from '../../../store/people/people.selector';
-import * as filteredPeopleSelectors from '../../../store/filteredPeople/filteredPeople.selector';
 import * as constants from '../../../constants/constants';
 
 const useStyles = makeStyles(getPeopleOverviewStyles);
@@ -21,25 +19,11 @@ const useStyles = makeStyles(getPeopleOverviewStyles);
 export default function PeopleOverview() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const data = useSelector(getAllPeople);
-  const filteredByNameData = useSelector(filteredPeopleSelectors.getFilteredByNamePeople);
 
   const handleSelectAgeChange = (e) => dispatch(setValueFromSelect(constants.headCells.filter((obj) => obj.label === e.target.value)[0]));
 
-  const handleInputNameChange = (e) => {
-    e.preventDefault();
-    const filteredByNameData = data.filter((obj) => obj.firstName.toLowerCase().includes(e.target.value.toLowerCase()) ||
-      obj.lastName.toLowerCase().includes(e.target.value.toLowerCase()));
-    dispatch(filteredPeopleActions.setFilteredByNamePeople(filteredByNameData));
-    dispatch(filteredPeopleActions.setFilteredByLocationPeople(filteredByNameData));
-  }
-
-  const handleInputLocationChange = (e) => {
-    e.preventDefault();
-    const filteredByLocationData = filteredByNameData.filter((obj) => obj.city.toLowerCase().includes(e.target.value.toLowerCase()) ||
-      obj.country.toLowerCase().includes(e.target.value.toLowerCase()));
-    dispatch(filteredPeopleActions.setFilteredByLocationPeople(filteredByLocationData));
-  }
+  const handleInputNameChange = (e) => dispatch(filteredPeopleActions.setName(e.target.value));
+  const handleInputLocationChange = (e) => dispatch(filteredPeopleActions.setLocation(e.target.value));
 
   return (
     <main className="main">

@@ -1,2 +1,2 @@
-export const getFilteredByNamePeople = (state) => state.filteredPeopleReducer.filteredByNamePeople;
-export const getFilteredByLocationPeople = (state) => state.filteredPeopleReducer.filteredByLocationPeople;
+export const getName = (state) => state.filteredPeopleReducer.name;
+export const getLocation = (state) => state.filteredPeopleReducer.location;

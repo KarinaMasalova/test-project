@@ -19,8 +19,8 @@ import PeopleTableToolbar from './PeopleTableToolbar';
 
 import setAllPeople from '../../store/people/people.actions';
 import setErrorSnackbar from '../../store/errorSnackbar/errorSnackbar.actions';
-import * as filteredPeopleActions from '../../store/filteredPeople/filteredPeople.actions';
 import * as filteredPeopleSelectors from '../../store/filteredPeople/filteredPeople.selector';
+import getAllPeople from '../../store/people/people.selector';
 
 const useStyles = makeStyles(getPeopleTableStyles);
 
@@ -32,21 +32,25 @@ export default function PeopleTable() {
   const [selected, setSelected] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const rows = useSelector(filteredPeopleSelectors.getFilteredByNamePeople);
+  const allPeopleData = useSelector(getAllPeople);
+  const name = useSelector(filteredPeopleSelectors.getName);
+  const location = useSelector(filteredPeopleSelectors.getLocation);
 
   const isSelected = (name) => selected.findIndex((selectedValue) => name === selectedValue) !== -1;
 
   useEffect(() => {
     loadPeopleData()
-      .then((data) =>  {
-        dispatch(setAllPeople(data));
-        dispatch(filteredPeopleActions.setFilteredByNamePeople(data));
-      })
+      .then((data) => dispatch(setAllPeople(data)))
       .catch((error) => {
         Promise.reject(error);
         dispatch(setErrorSnackbar(true));
       });
   }, []);
+
+  const peopleData = allPeopleData.filter((obj) => {
+    return (obj.firstName.toLowerCase().includes(name.toLowerCase()) || obj.lastName.toLowerCase().includes(name.toLowerCase())) &&
+    (obj.city.toLowerCase().includes(location.toLowerCase()) || obj.country.toLowerCase().includes(location.toLowerCase()))
+  });
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -56,7 +60,7 @@ export default function PeopleTable() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.firstName);
+      const newSelecteds = peopleData.map((n) => n.firstName);
       setSelected(newSelecteds);
       return;
     }
@@ -91,7 +95,7 @@ export default function PeopleTable() {
     setPage(0);
   };
 
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, peopleData.length - page * rowsPerPage);
 
   return (
     <div className={classes.root}>
@@ -110,10 +114,10 @@ export default function PeopleTable() {
               orderBy={orderBy}
               onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
-              rowCount={rows.length}
+              rowCount={peopleData.length}
             />
             <TableBody>
-              {tableSort(rows, getComparator(order, orderBy))
+              {tableSort(peopleData, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   const isItemSelected = isSelected(row.firstName);
@@ -166,7 +170,7 @@ export default function PeopleTable() {
         <TablePagination
           rowsPerPageOptions={[5, 10]}
           component="div"
-          count={rows.length}
+          count={peopleData.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onChangePage={handleChangePage}

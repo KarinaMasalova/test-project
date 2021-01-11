@@ -1,21 +1,19 @@
 const initialState = {
     name: '',
-    location: '',
-    filteredByNamePeople: [],
-    filteredByLocationPeople: []
+    location: ''
 };
 
 export default function filteredPeopleReducer(state = initialState, action) {
     switch(action.type) {
-        case "SET_FILTERED_BY_NAME_PEOPLE":
+        case "SET_NAME":
             return {
                 ...state,
-                filteredByNamePeople: action.payload
+                name: action.payload
             }
-        case "SET_FILTERED_BY_LOCATION_PEOPLE":
+        case "SET_LOCATION":
             return {
                 ...state,
-                filteredByLocationPeople: action.payload
+                location: action.payload
             }
         default:
             return state;
