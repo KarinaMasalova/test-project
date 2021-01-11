@@ -19,13 +19,13 @@ export const headCells = [
 export const PEOPLE_KEY = 'people';
 export const CHARTS_KEY = 'charts';
 export const ageOptions = [
-    "< 18",
-    "< 25",
-    "< 35",
-    "< 50",
-    "< 100"
+    { label: "< 18", maxValue: 18 },
+    { label: "< 25", maxValue: 25 },
+    { label: "< 35", maxValue: 35 },
+    { label: "< 50", maxValue: 50 },
+    { label: "< 100", maxValue: 100 }
 ];
 export const roleOptions = [
-    "lawyer",
-    "client"
+    { label: "lawyer" },
+    { label: "client" }
 ];
