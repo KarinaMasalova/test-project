@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -10,20 +10,40 @@ import Input from '../../../components/Common/Input/Input';
 import Button from '../../../components/Common/Button/Button';
 import PeopleTable from '../../../components/PeopleTable/PeopleTable';
 
-import * as filteredPeopleActions from '../../../store/filteredPeople/filteredPeople.actions';
+import setFilteredPeople from '../../../store/filteredPeople/filteredPeople.actions';
 import setValueFromSelect from '../../../store/valueFromSelect/valueFromSelect.actions';
 import * as constants from '../../../constants/constants';
+import getAllPeople from '../../../store/people/people.selector';
 
 const useStyles = makeStyles(getPeopleOverviewStyles);
 
 export default function PeopleOverview() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const allPeopleData = useSelector(getAllPeople);
+
+  let name = '';
+  let location = '';
+
+  const filter = () => {
+    const filteredData = allPeopleData.filter((obj) => {
+      return (obj.firstName.toLowerCase().includes(name.toLowerCase()) || obj.lastName.toLowerCase().includes(name.toLowerCase())) &&
+      (obj.city.toLowerCase().includes(location.toLowerCase()) || obj.country.toLowerCase().includes(location.toLowerCase()))
+    });
+    dispatch(setFilteredPeople(filteredData));
+  }
 
   const handleSelectAgeChange = (e) => dispatch(setValueFromSelect(constants.headCells.filter((obj) => obj.label === e.target.value)[0]));
 
-  const handleInputNameChange = (e) => dispatch(filteredPeopleActions.setName(e.target.value));
-  const handleInputLocationChange = (e) => dispatch(filteredPeopleActions.setLocation(e.target.value));
+  const handleInputNameChange = (e) => {
+    name = e.target.value;
+    filter();
+  }
+
+  const handleInputLocationChange = (e) => {
+    location = e.target.value;
+    filter();
+  }
 
   return (
     <main className="main">

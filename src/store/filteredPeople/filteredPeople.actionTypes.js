@@ -1,2 +1,3 @@
-export const SET_NAME = 'SET_NAME';
-export const SET_LOCATION = 'SET_LOCATION';
+const SET_FILTERED_PEOPLE = 'SET_FILTERED_PEOPLE';
+
+export default SET_FILTERED_PEOPLE;

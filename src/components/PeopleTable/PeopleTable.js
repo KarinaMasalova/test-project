@@ -19,8 +19,8 @@ import PeopleTableToolbar from './PeopleTableToolbar';
 
 import setAllPeople from '../../store/people/people.actions';
 import setErrorSnackbar from '../../store/errorSnackbar/errorSnackbar.actions';
-import * as filteredPeopleSelectors from '../../store/filteredPeople/filteredPeople.selector';
-import getAllPeople from '../../store/people/people.selector';
+import getFilteredPeople from '../../store/filteredPeople/filteredPeople.selector';
+import setFilteredPeople from '../../store/filteredPeople/filteredPeople.actions';
 
 const useStyles = makeStyles(getPeopleTableStyles);
 
@@ -32,25 +32,22 @@ export default function PeopleTable() {
   const [selected, setSelected] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const allPeopleData = useSelector(getAllPeople);
-  const name = useSelector(filteredPeopleSelectors.getName);
-  const location = useSelector(filteredPeopleSelectors.getLocation);
+
+  const allPeopleData = useSelector(getFilteredPeople);
 
   const isSelected = (name) => selected.findIndex((selectedValue) => name === selectedValue) !== -1;
 
   useEffect(() => {
     loadPeopleData()
-      .then((data) => dispatch(setAllPeople(data)))
+      .then((data) => {
+        dispatch(setAllPeople(data));
+        dispatch(setFilteredPeople(data));
+      })
       .catch((error) => {
         Promise.reject(error);
         dispatch(setErrorSnackbar(true));
       });
   }, []);
-
-  const peopleData = allPeopleData.filter((obj) => {
-    return (obj.firstName.toLowerCase().includes(name.toLowerCase()) || obj.lastName.toLowerCase().includes(name.toLowerCase())) &&
-    (obj.city.toLowerCase().includes(location.toLowerCase()) || obj.country.toLowerCase().includes(location.toLowerCase()))
-  });
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -60,7 +57,7 @@ export default function PeopleTable() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = peopleData.map((n) => n.firstName);
+      const newSelecteds = allPeopleData.map((n) => n.firstName);
       setSelected(newSelecteds);
       return;
     }
@@ -95,7 +92,7 @@ export default function PeopleTable() {
     setPage(0);
   };
 
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, peopleData.length - page * rowsPerPage);
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, allPeopleData.length - page * rowsPerPage);
 
   return (
     <div className={classes.root}>
@@ -114,23 +111,23 @@ export default function PeopleTable() {
               orderBy={orderBy}
               onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
-              rowCount={peopleData.length}
+              rowCount={allPeopleData.length}
             />
             <TableBody>
-              {tableSort(peopleData, getComparator(order, orderBy))
+              {tableSort(allPeopleData, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  const isItemSelected = isSelected(row.firstName);
+                .map((person, index) => {
+                  const isItemSelected = isSelected(person.firstName);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.firstName)}
+                      onClick={(event) => handleClick(event, person.firstName)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.firstName}
+                      key={person.firstName}
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
@@ -140,21 +137,21 @@ export default function PeopleTable() {
                         />
                       </TableCell>
                       <TableCell component="th" id={labelId} scope="row" padding="none">
-                        {row.firstName}
+                        {person.firstName}
                       </TableCell>
-                      <TableCell align="left">{row.lastName}</TableCell>
-                      <TableCell align="left">{row.avatar}</TableCell>
-                      <TableCell align="left">{row.role}</TableCell>
-                      <TableCell align="left">{row.lastLoggedIn}</TableCell>
-                      <TableCell align="left">{row.profileViews}</TableCell>
-                      <TableCell align="left">{row.age}</TableCell>
-                      <TableCell align="left">{row.country}</TableCell>
-                      <TableCell align="left">{row.city}</TableCell>
-                      <TableCell align="left">{row.address}</TableCell>
-                      <TableCell align="left">{row.phone}</TableCell>
-                      <TableCell align="left">{row.company}</TableCell>
+                      <TableCell align="left">{person.lastName}</TableCell>
+                      <TableCell align="left">{person.avatar}</TableCell>
+                      <TableCell align="left">{person.role}</TableCell>
+                      <TableCell align="left">{person.lastLoggedIn}</TableCell>
+                      <TableCell align="left">{person.profileViews}</TableCell>
+                      <TableCell align="left">{person.age}</TableCell>
+                      <TableCell align="left">{person.country}</TableCell>
+                      <TableCell align="left">{person.city}</TableCell>
+                      <TableCell align="left">{person.address}</TableCell>
+                      <TableCell align="left">{person.phone}</TableCell>
+                      <TableCell align="left">{person.company}</TableCell>
                       <TableCell align="left">
-                        {row.connections.length === 0 ? 'none' : row.connections.map((person) => person.fullName)}
+                        {person.connections.length === 0 ? 'none' : person.connections.map((person) => person.fullName)}
                       </TableCell>
                     </TableRow>
                   );
@@ -170,7 +167,7 @@ export default function PeopleTable() {
         <TablePagination
           rowsPerPageOptions={[5, 10]}
           component="div"
-          count={peopleData.length}
+          count={allPeopleData.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onChangePage={handleChangePage}
