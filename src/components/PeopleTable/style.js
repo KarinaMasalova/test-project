@@ -29,6 +29,9 @@ const getPeopleTableStyles = (theme) => ({
     height: '50px',
     borderRadius: '50%'
   },
+  tableCells: {
+    textAlign: 'center'
+  },
   visuallyHidden: {
     border: 0,
     clip: 'rect(0 0 0 0)',
@@ -44,8 +47,9 @@ const getPeopleTableStyles = (theme) => ({
 
 const getToolbarStyles = (theme) => ({
   root: {
-    paddingLeft: theme.spacing(2),
+    paddingLeft: theme.spacing(4),
     paddingRight: theme.spacing(1),
+    paddingTop: theme.spacing(3)
   },
   highlight:
     theme.palette.type === 'light'

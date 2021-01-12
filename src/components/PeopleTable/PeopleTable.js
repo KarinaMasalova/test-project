@@ -129,29 +129,29 @@ export default function PeopleTable() {
                       key={person.firstName}
                       selected={isItemSelected}
                     >
-                      <TableCell padding="checkbox">
+                      <TableCell padding="default">
                         <Checkbox
                           checked={isItemSelected}
                           inputProps={{ 'aria-labelledby': labelId }}
                         />
                       </TableCell>
-                      <TableCell component="th" id={labelId} scope="row" padding="none">
+                      <TableCell component="th" id={labelId} scope="row" padding="none" className={classes.tableCells}>
                         {person.firstName}
                       </TableCell>
-                      <TableCell align="left">{person.lastName}</TableCell>
-                      <TableCell align="left">
+                      <TableCell align="left" className={classes.tableCells}>{person.lastName}</TableCell>
+                      <TableCell align="left" className={classes.tableCells}>
                         <img src={person.avatar} alt={person.lastName} className={classes.avatar} />
                       </TableCell>
-                      <TableCell align="left">{person.role}</TableCell>
-                      <TableCell align="left">{person.lastLoggedIn}</TableCell>
-                      <TableCell align="left">{person.profileViews}</TableCell>
-                      <TableCell align="left">{person.age}</TableCell>
-                      <TableCell align="left">{person.country}</TableCell>
-                      <TableCell align="left">{person.city}</TableCell>
-                      <TableCell align="left">{person.address}</TableCell>
-                      <TableCell align="left">{person.phone}</TableCell>
-                      <TableCell align="left">{person.company}</TableCell>
-                      <TableCell align="left">
+                      <TableCell align="left" className={classes.tableCells}>{person.role}</TableCell>
+                      <TableCell align="left" className={classes.tableCells}>{person.lastLoggedIn}</TableCell>
+                      <TableCell align="left" className={classes.tableCells}>{person.profileViews}</TableCell>
+                      <TableCell align="left" className={classes.tableCells}>{person.age}</TableCell>
+                      <TableCell align="left" className={classes.tableCells}>{person.country}</TableCell>
+                      <TableCell align="left" className={classes.tableCells}>{person.city}</TableCell>
+                      <TableCell align="left" className={classes.tableCells}>{person.address}</TableCell>
+                      <TableCell align="left" className={classes.tableCells}>{person.phone}</TableCell>
+                      <TableCell align="left" className={classes.tableCells}>{person.company}</TableCell>
+                      <TableCell align="left" className={classes.tableCells}>
                         {person.connections.length === 0 ? 'none' : person.connections.map((person) => person.fullName)}
                       </TableCell>
                     </TableRow>

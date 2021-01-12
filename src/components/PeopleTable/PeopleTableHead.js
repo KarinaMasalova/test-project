@@ -17,7 +17,7 @@ export default function PeopleTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding="checkbox">
+        <TableCell padding="default">
           <Checkbox
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
@@ -27,6 +27,7 @@ export default function PeopleTableHead(props) {
         </TableCell>
         {constants.headCells.map((headCell) => (
           <TableCell
+            className={classes.tableCells}
             key={headCell.id}
             padding={headCell.disablePadding ? 'none' : 'default'}
             sortDirection={orderBy === headCell.id ? order : false}
