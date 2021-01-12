@@ -23,7 +23,7 @@ export default function PeopleTableToolbar(props) {
     >
       {numSelected > 0 ? (
         <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
-          {numSelected}
+          {numSelected + ' '}
           selected
         </Typography>
       ) : (

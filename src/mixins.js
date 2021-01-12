@@ -9,5 +9,4 @@ const background = ({ display, width, height, image, repeat, size, position }) =
         backgroundPosition: position
     }
 }
-
 export default background;

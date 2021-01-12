@@ -1,10 +1,8 @@
-
-const getAppStyles = (theme) => ({
-    root: {
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(1),
-      height: '100%'
-    },
-  });
+const getAppStyles = () => ({
+  root: {
+    height: '100%',
+    overflow: 'auto'
+  }
+});
 
 export default getAppStyles;

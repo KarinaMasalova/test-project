@@ -24,13 +24,13 @@ const getPeopleTableStyles = (theme) => ({
       backgroundColor: `${constants.colorSecondary}`
     }
   },
+  tableCellFirstname: {
+    paddingLeft: '18px'
+  },
   avatar: {
     width: '50px',
     height: '50px',
     borderRadius: '50%'
-  },
-  tableCells: {
-    textAlign: 'center'
   },
   visuallyHidden: {
     border: 0,
@@ -49,7 +49,8 @@ const getToolbarStyles = (theme) => ({
   root: {
     paddingLeft: theme.spacing(4),
     paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(3)
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(3)
   },
   highlight:
     theme.palette.type === 'light'

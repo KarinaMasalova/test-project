@@ -27,7 +27,7 @@ export default function PeopleTableHead(props) {
         </TableCell>
         {constants.headCells.map((headCell) => (
           <TableCell
-            className={classes.tableCells}
+            align="center"
             key={headCell.id}
             padding={headCell.disablePadding ? 'none' : 'default'}
             sortDirection={orderBy === headCell.id ? order : false}
