@@ -139,7 +139,9 @@ export default function PeopleTable() {
                         {person.firstName}
                       </TableCell>
                       <TableCell align="left">{person.lastName}</TableCell>
-                      <TableCell align="left">{person.avatar}</TableCell>
+                      <TableCell align="left">
+                        <img src={person.avatar} alt={person.lastName} className={classes.avatar} />
+                      </TableCell>
                       <TableCell align="left">{person.role}</TableCell>
                       <TableCell align="left">{person.lastLoggedIn}</TableCell>
                       <TableCell align="left">{person.profileViews}</TableCell>

@@ -24,6 +24,11 @@ const getPeopleTableStyles = (theme) => ({
       backgroundColor: `${constants.colorSecondary}`
     }
   },
+  avatar: {
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%'
+  },
   visuallyHidden: {
     border: 0,
     clip: 'rect(0 0 0 0)',
