@@ -3,6 +3,7 @@ const getButtonStyles = (theme) => ({
         '& > *': {
           margin: theme.spacing(1),
         },
+        marginBottom: '20px'
     },
 });
 

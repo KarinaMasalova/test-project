@@ -97,7 +97,7 @@ export default function PeopleTable() {
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <PeopleTableToolbar numSelected={selected.length} />
-        <TableContainer>
+        <TableContainer className={classes.table}>
           <Table
             className={classes.table}
             aria-labelledby="tableTitle"

@@ -3,26 +3,37 @@ import * as constants from '../../constants/constants';
 
 const getPeopleTableStyles = (theme) => ({
   root: {
-      width: '100%',
-      boxShadow: `${constants.boxShadow}`,
+    width: '100%',
+    boxShadow: `${constants.boxShadow}`,
   },
   paper: {
-      width: '100%',
-      marginBottom: theme.spacing(2),
+    width: '100%',
+    marginBottom: theme.spacing(2),
   },
   table: {
-      minWidth: 750,
+    minWidth: 750,
+    '&::-webkit-scrollbar': {
+      height: '1px',
+    },
+    '&::-webkit-scrollbar-track': {
+      backgroundColor: 'rgba(0,0,0,0.1)',
+      borderRadius: '5px'
+    },
+    '&::-webkit-scrollbar-thumb': {
+      borderRadius: '5px',
+      backgroundColor: `${constants.colorSecondary}`
+    }
   },
   visuallyHidden: {
-      border: 0,
-      clip: 'rect(0 0 0 0)',
-      height: 1,
-      margin: -1,
-      overflow: 'hidden',
-      padding: 0,
-      position: 'absolute',
-      top: 20,
-      width: 1,
+    border: 0,
+    clip: 'rect(0 0 0 0)',
+    height: 1,
+    margin: -1,
+    overflow: 'hidden',
+    padding: 0,
+    position: 'absolute',
+    top: 20,
+    width: 1,
   },
 });
 

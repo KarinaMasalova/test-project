@@ -49,12 +49,14 @@ export default function PeopleOverview() {
     setFilters(obj);
   }
 
-  const handleResetButtonClick = (e) => setFilters({name: '', location: '', age: '', role: ''});
+  const handleResetButtonClick = () => setFilters({name: '', location: '', age: '', role: ''});
 
   return (
     <main className="main">
-      <Input onChange={(e) => handleFilterChange(e, 'name')} label="Enter firstname / lastname..." value={filters.name} />
-      <Input onChange={(e) => handleFilterChange(e, 'location')} label="Enter country / city..." value={filters.location} />
+      <div className={classes.root}>
+        <Input onChange={(e) => handleFilterChange(e, 'name')} label="Enter firstname / lastname..." value={filters.name} />
+        <Input onChange={(e) => handleFilterChange(e, 'location')} label="Enter country / city..." value={filters.location} />
+      </div>
       <div className={classes.root}>
         <Select
           options={constants.ageOptions.map((obj) => obj.label)}
