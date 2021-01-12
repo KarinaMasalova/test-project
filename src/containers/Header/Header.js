@@ -1,18 +1,22 @@
 import React from "react";
 
-import './Header.scss';
+import { makeStyles } from '@material-ui/core/styles';
 
+import getHeaderStyles from './style';
 import HeaderOptionsMenu from '../../components/HeaderOptionsMenu/HeaderOptionsMenu';
 import HeaderTabPanel from "../../components/HeaderTabPanel/HeaderTabPanel";
 
+const useStyles = makeStyles(getHeaderStyles);
+
 export default function Header() {
-    return (
-      <header className="header">
-        <div className="logo">
-          <span className="logo__img" />
-        </div>
-        <HeaderTabPanel />
-        <HeaderOptionsMenu />
-      </header>
-    );
+  const classes = useStyles();
+  return (
+    <header className={classes.root}>
+      <div className={classes.logo}>
+        <span className={classes.logoImage} />
+      </div>
+      <HeaderTabPanel />
+      <HeaderOptionsMenu />
+    </header>
+  );
 }
