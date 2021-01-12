@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Route } from 'react-router-dom';
 import SwipeableRoutes from "react-swipeable-routes";
 
@@ -8,7 +8,6 @@ import { ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import getTheme from '../utils/theme';
 import Context from '../utils/context';
 
-import './App.scss';
 import getAppStyles from '../styles';
 import Header from './Header/Header';
 import PeopleOverview from './Main/PeopleOverview/PeopleOverview';
@@ -23,24 +22,13 @@ export default function App() {
   const isDarkMode = (theme) => theme.palette.type === 'dark';
   const [darkMode, setDarkMode] = useState(isDarkMode(theme));
 
-  useEffect(() => {
-    const mode =  JSON.parse(localStorage.getItem('isDarkMode'));
-    if (mode === null || mode === undefined) {
-      setDarkMode(isDarkMode(theme));
-    } else {
-      if (mode !== darkMode) {
-        setDarkMode(mode);
-      }
-    }
-  }, [theme]);
-
   const switchMode = () => {
     setDarkMode(!darkMode);
     localStorage.setItem('isDarkMode', JSON.stringify(!darkMode));
   }
 
   return (
-    <ThemeProvider theme={{...theme, palette: {...theme.palette, type:  darkMode ? 'dark' : 'light' } }}>
+    <ThemeProvider theme={theme}>
       <Context.Provider value={{darkMode, switchMode}}>
         <Paper square classes={classes}>
           <Header />

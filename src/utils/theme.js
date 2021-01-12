@@ -3,12 +3,12 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 export default function getTheme() {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+    const local =  JSON.parse(localStorage.getItem('isDarkMode'));
+    const dark = local ?? prefersDarkMode; // right operand if left is null or undefined, otherwise returns left operand
 
-    const theme = createMuiTheme({
+    return createMuiTheme({
         palette: {
-            type: prefersDarkMode ? 'dark' : 'light',
+            type: dark ? 'dark' : 'light',
         },
     });
-
-    return theme;
 }
