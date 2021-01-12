@@ -27,7 +27,7 @@ export default function PeopleOverview() {
     role: ''
   });
 
-  useEffect(() => filterTable(), [filters]);
+  useEffect(() => { filterTable() }, [filters]);
 
   const filterTable = () => {
     const ageMax = constants.ageOptions.filter((obj) => obj.label === filters.age)[0];
@@ -45,13 +45,16 @@ export default function PeopleOverview() {
   const handleFilterChange = (e, filter) => {
     const obj = { ...filters };
     obj[filter] = e.target.value;
+    console.log(obj);
     setFilters(obj);
   }
 
+  const handleResetButtonClick = (e) => setFilters({name: '', location: '', age: '', role: ''});
+
   return (
     <main className="main">
-      <Input onChange={(e) => handleFilterChange(e, 'name')} label="Enter firstname / lastname..." />
-      <Input onChange={(e) => handleFilterChange(e, 'location')} label="Enter country / city..." />
+      <Input onChange={(e) => handleFilterChange(e, 'name')} label="Enter firstname / lastname..." value={filters.name} />
+      <Input onChange={(e) => handleFilterChange(e, 'location')} label="Enter country / city..." value={filters.location} />
       <div className={classes.root}>
         <Select
           options={constants.ageOptions.map((obj) => obj.label)}
@@ -66,7 +69,7 @@ export default function PeopleOverview() {
           value={filters.role}
         />
       </div>
-      <Button variant="outlined" color="secondary" value="Reset filters" />
+      <Button variant="outlined" color="secondary" value="Reset filters" onClick={handleResetButtonClick} />
       <PeopleTable />
     </main>
   );

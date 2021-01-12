@@ -10,7 +10,7 @@ const useStyles = makeStyles(getInputStyles);
 
 export default function Input(props) {
   const classes = useStyles();
-  const { onChange, label } = props;
+  const { onChange, label, value } = props;
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
@@ -21,6 +21,7 @@ export default function Input(props) {
         variant="outlined"
         color="secondary"
         onChange={onChange}
+        value={value}
       />
     </form>
   );
@@ -28,5 +29,6 @@ export default function Input(props) {
 
 Input.propTypes = {
   onChange: PropTypes.func.isRequired,
-  label: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired
 };

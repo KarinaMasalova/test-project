@@ -10,11 +10,11 @@ const useStyles = makeStyles(getButtonStyles);
 
 export default function Btn(props) {
   const classes = useStyles();
-  const { variant, color, value } = props;
+  const { variant, color, value, onClick } = props;
 
   return (
     <div className={classes.root}>
-      <Button variant={variant} color={color}>
+      <Button variant={variant} color={color} onClick={onClick}>
         {value}
       </Button>
     </div>
@@ -24,5 +24,6 @@ export default function Btn(props) {
 Btn.propTypes = {
   variant: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
 };
