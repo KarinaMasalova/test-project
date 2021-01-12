@@ -18,36 +18,36 @@ const useStyles = makeStyles(getPeopleOverviewStyles);
 
 let name = '';
 let location = '';
-let _age = null;
-let _role = null;
+let age = null;
+let role = null;
 
 export default function PeopleOverview() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const allPeopleData = useSelector(getAllPeople);
-  const [age, setAge] = useState({label: ''});
-  const [role, setRole] = useState({label: ''});
+  const [ageState, setAge] = useState({label: ''});
+  const [roleState, setRole] = useState({label: ''});
 
   const filter = () => {
     const filteredData = allPeopleData.filter((obj) => {
       return (obj.firstName.toLowerCase().includes(name.toLowerCase()) || obj.lastName.toLowerCase().includes(name.toLowerCase())) &&
         (obj.city.toLowerCase().includes(location.toLowerCase()) || obj.country.toLowerCase().includes(location.toLowerCase())) &&
-        (_age === null || obj.age < _age) &&
-        (_role === null || obj.role === _role)
+        (age === null || obj.age < age) &&
+        (role === null || obj.role === role)
     });
     dispatch(setFilteredPeople(filteredData));
   }
 
   const handleSelectAgeChange = (e) => {
-    const ageObj = constants.ageOptions.filter((obj) => obj.label === e.target.value)[0]
-    _age = ageObj.maxValue;
+    const ageObj = constants.ageOptions.filter((obj) => obj.label === e.target.value)[0];
+    age = ageObj.maxValue;
     setAge(ageObj);
     filter();
   }
 
   const handleSelectRoleChange = (e) => {
     const roleObj = constants.roleOptions.filter((obj) => obj.label === e.target.value)[0];
-    _role = roleObj.label;
+    role = roleObj.label;
     setRole(roleObj);
     filter();
   }
@@ -71,13 +71,13 @@ export default function PeopleOverview() {
           options={constants.ageOptions.map((obj) => obj.label)}
           onChange={handleSelectAgeChange}
           label="Select age..."
-          value={age.label}
+          value={ageState.label}
         />
         <Select
           options={constants.roleOptions.map((obj) => obj.label)}
           onChange={handleSelectRoleChange}
           label="Select role..."
-          value={role.label}
+          value={roleState.label}
         />
       </div>
       <Button variant="outlined" color="secondary" value="Reset filters" />
