@@ -2,18 +2,13 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-
-import getInputStyles from './style';
-
-const useStyles = makeStyles(getInputStyles);
+import FormControl from '@material-ui/core/FormControl';
 
 export default function Input(props) {
-  const classes = useStyles();
-  const { onChange, label, value } = props;
+  const { onChange, label, value, className } = props;
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    <FormControl variant="outlined" className={className}>
       <TextField
         id={label}
         label={label}
@@ -23,12 +18,14 @@ export default function Input(props) {
         onChange={onChange}
         value={value}
       />
-    </form>
+    </FormControl>
   );
 }
 
 Input.propTypes = {
   onChange: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  className: PropTypes.object.isRequired
 };
