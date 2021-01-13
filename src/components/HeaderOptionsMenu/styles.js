@@ -1,4 +1,4 @@
-const ITEM_HEIGHT = 48;
+import { menuItemHeight, colorSecondary } from '../../constants/constants';
 
 const getMenuStyles = (theme) => ({
     root: {
@@ -6,9 +6,20 @@ const getMenuStyles = (theme) => ({
         width: '10%'
     },
     style: {
-        maxHeight: ITEM_HEIGHT * 4.5,
+        maxHeight: menuItemHeight * 4.5,
         width: '20ch'
     },
+    icon: {
+        width: '42px',
+        height: '42px',
+        margin: '2px 10px',
+        backgroundColor: colorSecondary,
+        '&:hover': {
+            backgroundColor: colorSecondary,
+            opacity: 0.5,
+            border: '1px lightgray solid'
+        }
+    }
 });
 
 export default getMenuStyles;
