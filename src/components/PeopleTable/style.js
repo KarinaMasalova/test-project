@@ -66,6 +66,20 @@ const getToolbarStyles = (theme) => ({
     flex: '1 1 100%',
     textShadow: `${constants.textShadowColor} 1px 0 10px`,
   },
+  addIcon: {
+    color: constants.colorSecondary,
+    width: '20px',
+    height: '20px',
+    marginRight: '20px',
+    '&:hover': {
+      opacity: 0.5,
+      cursor: 'pointer'
+    }
+  },
+  addIconText: {
+    color: constants.colorSecondary,
+    width: '10%',
+  }
 });
 
 export { getPeopleTableStyles, getToolbarStyles };

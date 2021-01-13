@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+import AddCircleOutlineSharpIcon from '@material-ui/icons/AddCircleOutlineSharp';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 
@@ -38,7 +39,12 @@ export default function PeopleTableToolbar(props) {
             <DeleteIcon />
           </IconButton>
         </Tooltip>
-      ) : (<></>)}
+      ) : (
+        <>
+          <div className={classes.addIconText}>Add person</div>
+          <AddCircleOutlineSharpIcon className={classes.addIcon} />
+        </>
+      )}
     </Toolbar>
   );
 }
