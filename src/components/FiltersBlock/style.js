@@ -25,6 +25,12 @@ const getFiltersBlockStyles = (theme) => ({
     formControl: {
         margin: theme.spacing(1),
         width: '23%',
+        '& > .MuiFormControl-root > .MuiFormLabel-root': {
+            fontSize: '12px'
+        },
+        '& > .MuiFormLabel-root': {
+            fontSize: '12px'
+        },
     },
     resetButton: {
         textAlign: 'right',
