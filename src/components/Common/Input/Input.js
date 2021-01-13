@@ -26,6 +26,5 @@ Input.propTypes = {
   onChange: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  className: PropTypes.object.isRequired
+  className: PropTypes.string.isRequired
 };
