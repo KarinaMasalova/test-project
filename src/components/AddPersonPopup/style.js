@@ -1,6 +1,6 @@
 import { colorSecondary, boxShadow } from "../../constants/constants";
 
-const getAddPersonPopupStyles = () => ({
+const getAddPersonPopupStyles = (theme) => ({
     overlay: {
         position: 'fixed',
         top: 0,
@@ -11,8 +11,10 @@ const getAddPersonPopupStyles = () => ({
         zIndex: 1000,
     },
     popup: {
+        backgroundColor: theme.palette.background.paper,
+        minWidth: '40%',
+        maxWidth: '55%',
         padding: '20px',
-        backgroundColor: 'transparent',
         position: 'fixed',
         top: '50%',
         left: '50%',
@@ -23,7 +25,7 @@ const getAddPersonPopupStyles = () => ({
         boxShadow: boxShadow,
         overflowY: 'auto',
         '&::-webkit-scrollbar': {
-            width: '6px',
+            width: '2px',
         },
         '&::-webkit-scrollbar-track': {
             backgroundColor: 'lightgray',
@@ -31,12 +33,22 @@ const getAddPersonPopupStyles = () => ({
         },
         '&::-webkit-scrollbar-thumb': {
             borderRadius: '5px',
-            backgroundColor: 'red',
+            backgroundColor: colorSecondary,
         },
     },
     popupTitle: {
         color: colorSecondary,
         fontSize: '14px',
+        marginBottom: '20px',
+    },
+    form: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%'
+    },
+    button: {
+        textAlign: 'right',
+        marginLeft: '10px',
     },
     buttons: {
         display: 'flex',

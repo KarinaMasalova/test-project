@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -11,10 +13,11 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 import { getToolbarStyles } from './style';
 
+const useStyles = makeStyles(getToolbarStyles);
+
 export default function PeopleTableToolbar(props) {
-  const useStyles = makeStyles(getToolbarStyles);
-  const classes = useStyles();
   const { numSelected } = props;
+  const classes = useStyles();
 
   return (
     <Toolbar
@@ -42,7 +45,9 @@ export default function PeopleTableToolbar(props) {
       ) : (
         <>
           <div className={classes.addIconText}>Add person</div>
-          <AddCircleOutlineSharpIcon className={classes.addIcon} />
+          <Link to="/add">
+            <AddCircleOutlineSharpIcon className={classes.addIcon} />
+          </Link>
         </>
       )}
     </Toolbar>
@@ -50,5 +55,5 @@ export default function PeopleTableToolbar(props) {
 }
 
 PeopleTableToolbar.propTypes = {
-    numSelected: PropTypes.number.isRequired,
+  numSelected: PropTypes.number.isRequired,
 };
