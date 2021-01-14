@@ -44,7 +44,6 @@ export default function PeopleOverview() {
     const handleFilterChange = (e, filter) => {
         const obj = { ...filters };
         obj[filter] = e.target.value;
-        console.log(obj);
         setFilters(obj);
     }
 

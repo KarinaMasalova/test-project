@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import SwipeableRoutes from "react-swipeable-routes";
 
 import { Paper } from '@material-ui/core';
@@ -13,6 +13,7 @@ import Header from './Header/Header';
 import PeopleOverview from './Main/PeopleOverview/PeopleOverview';
 import ChartsOverview from './Main/ChartsOverview/ChartsOverview';
 import ErrorSnackbar from '../components/ErrorSnackbar/ErrorSnackbar';
+import AddPersonPopup from "../components/AddPersonPopup/AddPersonPopup";
 
 const useStyles = makeStyles(getAppStyles);
 
@@ -36,6 +37,9 @@ export default function App() {
             <Route exact path="/charts" component={ChartsOverview} />
             <Route exact path="/" component={PeopleOverview} />
           </SwipeableRoutes>
+          <Switch>
+            <Route path="/add" render={() => <AddPersonPopup />} />
+          </Switch>
           <ErrorSnackbar />
         </Paper>
       </Context.Provider>

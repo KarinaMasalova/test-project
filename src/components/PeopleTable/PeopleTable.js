@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Switch } from "react-router-dom";
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -17,7 +16,6 @@ import loadPeopleData from '../../utils/api';
 import { getComparator, tableSort } from './sorting';
 import PeopleTableHead from './PeopleTableHead';
 import PeopleTableToolbar from './PeopleTableToolbar';
-import AddPersonPopup from '../AddPersonPopup/AddPersonPopup';
 
 import { setAllPeople, setFilteredPeople } from '../../store/people/people.actions';
 import { getFilteredPeople } from '../../store/people/people.selector';
@@ -176,9 +174,6 @@ export default function PeopleTable() {
           onChangePage={handleChangePage}
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
-        <Switch>
-          <Route path="/add" render={() => <AddPersonPopup />} />
-        </Switch>
       </Paper>
     </div>
   );
