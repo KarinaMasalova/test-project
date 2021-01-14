@@ -14,6 +14,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { getToolbarStyles } from './style';
 import setAddPersonPopup from '../../store/addPersonPopup/addPersonPopup.actions';
 
+import { colorPrimary } from '../../constants/constants';
+
 const useStyles = makeStyles(getToolbarStyles);
 
 export default function PeopleTableToolbar(props) {
@@ -32,11 +34,7 @@ export default function PeopleTableToolbar(props) {
           {numSelected + ' '}
           selected
         </Typography>
-      ) : (
-        <Typography className={classes.title} color="secondary" variant="h4" id="tableTitle" component="div">
-          Our people
-        </Typography>
-      )}
+      ) : (<></>)}
 
       { numSelected > 0 ? (
         <Tooltip title="Delete">

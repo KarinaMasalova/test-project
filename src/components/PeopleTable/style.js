@@ -1,10 +1,9 @@
 import { lighten } from '@material-ui/core/styles';
-import * as constants from '../../constants/constants';
+import { colorPrimary, textShadowColor } from '../../constants/constants';
 
 const getPeopleTableStyles = (theme) => ({
   root: {
     width: '100%',
-    boxShadow: `${constants.boxShadow}`,
   },
   paper: {
     width: '100%',
@@ -51,12 +50,8 @@ const getToolbarStyles = (theme) => ({
           color: theme.palette.text.primary,
           backgroundColor: theme.palette.secondary.dark,
         },
-  title: {
-    flex: '1 1 100%',
-    textShadow: `${constants.textShadowColor} 1px 0 10px`,
-  },
   addIcon: {
-    color: constants.colorPrimary,
+    color: colorPrimary,
     width: '20px',
     height: '20px',
     marginRight: '20px',
@@ -66,7 +61,7 @@ const getToolbarStyles = (theme) => ({
     }
   },
   addIconText: {
-    color: constants.colorPrimary,
+    color: colorPrimary,
     width: '10%',
   }
 });

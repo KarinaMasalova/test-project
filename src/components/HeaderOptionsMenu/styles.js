@@ -1,4 +1,4 @@
-import { menuItemHeight, primaryColor } from '../../constants/constants';
+import { menuItemHeight, colorPrimary } from '../../constants/constants';
 
 const getMenuStyles = (theme) => ({
     root: {
@@ -13,9 +13,9 @@ const getMenuStyles = (theme) => ({
         width: '42px',
         height: '42px',
         margin: '2px 10px',
-        backgroundColor: primaryColor,
+        backgroundColor: colorPrimary,
         '&:hover': {
-            backgroundColor: primaryColor,
+            backgroundColor: colorPrimary,
             opacity: 0.5,
             border: '1px lightgray solid'
         }

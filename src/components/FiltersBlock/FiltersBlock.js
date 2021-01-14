@@ -51,7 +51,7 @@ export default function PeopleOverview() {
 
     return (
       <div className={classes.root}>
-        <h1 className={classes.headline}>Table filters</h1>
+        <h1 className={classes.headline}>Our people</h1>
         <form className={classes.filters} noValidate autoComplete="off">
           <Input
             className={classes.formControl}

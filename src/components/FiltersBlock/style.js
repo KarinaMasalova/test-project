@@ -1,4 +1,4 @@
-import { primaryColor } from '../../constants/constants';
+import { colorPrimary, textShadowColor } from '../../constants/constants';
 
 const getFiltersBlockStyles = (theme) => ({
     root: {
@@ -10,11 +10,11 @@ const getFiltersBlockStyles = (theme) => ({
         flexDirection: 'column'
     },
     headline: {
-        color: primaryColor,
+        color: colorPrimary,
         fontSize: '20px',
         fontWeight: '600',
         fontFamily: `"Roboto", "Helvetica", "Arial", sans-serif`,
-        padding: '5px 10px'
+        padding: '5px 10px',
     },
     filters: {
         display: 'flex',

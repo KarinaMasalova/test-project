@@ -1,8 +1,8 @@
-import { primaryColor } from "../../constants/constants";
+import { colorPrimary } from "../../constants/constants";
 
 const getAddPersonPopupStyles = () => ({
     dialogTitle: {
-        color: primaryColor,
+        color: colorPrimary,
         '& > .MuiTypography-h6': {
             fontSize: '3rem'
         },
