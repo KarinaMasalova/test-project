@@ -135,12 +135,11 @@ export default function PeopleTable() {
                           inputProps={{ 'aria-labelledby': labelId }}
                         />
                       </TableCell>
-                      <TableCell component="th" id={labelId} scope="row" padding="none" align="left" className={classes.tableCellFirstname}>
-                        {person.firstName}
-                      </TableCell>
-                      <TableCell align="left">{person.lastName}</TableCell>
                       <TableCell align="left">
                         <img src={person.avatar} alt={person.lastName} className={classes.avatar} />
+                      </TableCell>
+                      <TableCell component="th" align="left" className={classes.tableCellName}>
+                        {person.firstName + ' ' + person.lastName}
                       </TableCell>
                       <TableCell align="left">{person.role}</TableCell>
                       <TableCell align="left">{person.lastLoggedIn}</TableCell>

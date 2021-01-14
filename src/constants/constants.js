@@ -6,9 +6,8 @@ export const menuItemHeight = 48;
 export const PEOPLE_KEY = 'people';
 export const CHARTS_KEY = 'charts';
 export const headCells = [
-    { id: 'firstName', disablePadding: false, label: 'Firstname' },
-    { id: 'lastName', disablePadding: false, label: 'Lastname' },
     { id: 'avatar', disablePadding: false, label: 'Avatar' },
+    { id: 'name', disablePadding: false, label: 'Name' },
     { id: 'role', disablePadding: false, label: 'Role' },
     { id: 'lastLoggedIn', disablePadding: false, label: 'Last logged in' },
     { id: 'profileViews', disablePadding: false, label: 'Profile views' },

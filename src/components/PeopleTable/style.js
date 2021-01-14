@@ -12,7 +12,7 @@ const getPeopleTableStyles = (theme) => ({
   table: {
     minWidth: 750,
   },
-  tableCellFirstname: {
+  tableCellName: {
     paddingLeft: '18px'
   },
   avatar: {

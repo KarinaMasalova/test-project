@@ -29,16 +29,16 @@ export default function PeopleOverview() {
     useEffect(() => { filterTable() }, [filters]);
 
     const filterTable = () => {
-        const ageMax = ageOptions.filter((obj) => obj.label === filters.age)[0];
-        const filteredData = allPeopleData.filter((obj) => {
-            return (obj.firstName.toLowerCase().includes(filters.name.toLowerCase()) ||
-                obj.lastName.toLowerCase().includes(filters.name.toLowerCase())) &&
-            (obj.city.toLowerCase().includes(filters.location.toLowerCase()) ||
-                obj.country.toLowerCase().includes(filters.location.toLowerCase())) &&
-            (ageMax === undefined || obj.age < ageMax.maxValue) &&
-            (filters.role === '' || obj.role === filters.role)
-        });
-        dispatch(setFilteredPeople(filteredData));
+      const ageMax = ageOptions.filter((obj) => obj.label === filters.age)[0];
+      const filteredData = allPeopleData.filter((obj) => {
+        return (obj.firstName.toLowerCase().includes(filters.name.toLowerCase()) ||
+          obj.lastName.toLowerCase().includes(filters.name.toLowerCase())) &&
+          (obj.city.toLowerCase().includes(filters.location.toLowerCase()) ||
+          obj.country.toLowerCase().includes(filters.location.toLowerCase())) &&
+          (ageMax === undefined || obj.age < ageMax.maxValue) &&
+          (filters.role === '' || obj.role === filters.role)
+      });
+      dispatch(setFilteredPeople(filteredData));
     }
 
     const handleFilterChange = (e, filter) => {
@@ -56,7 +56,7 @@ export default function PeopleOverview() {
           <Input
             className={classes.formControl}
             onChange={(e) => handleFilterChange(e, 'name')}
-            label="Firstname / lastname..."
+            label="Name..."
             value={filters.name}
             type="text"
           />
