@@ -35,10 +35,8 @@ const getPeopleTableStyles = (theme) => ({
 
 const getToolbarStyles = (theme) => ({
   root: {
-    paddingLeft: theme.spacing(4),
-    paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3)
+    width: '100%',
+    padding: theme.spacing(3),
   },
   highlight:
     theme.palette.type === 'light'
@@ -54,16 +52,13 @@ const getToolbarStyles = (theme) => ({
     color: colorPrimary,
     width: '20px',
     height: '20px',
-    marginRight: '20px',
-    '&:hover': {
-      opacity: 0.5,
-      cursor: 'pointer'
+  },
+  button: {
+    '& > button': {
+      borderColor: colorPrimary,
+      color: colorPrimary,
     }
   },
-  addIconText: {
-    color: colorPrimary,
-    width: '10%',
-  }
 });
 
 export { getPeopleTableStyles, getToolbarStyles };

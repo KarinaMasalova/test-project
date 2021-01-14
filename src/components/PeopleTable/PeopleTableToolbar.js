@@ -10,11 +10,10 @@ import IconButton from '@material-ui/core/IconButton';
 import AddCircleOutlineSharpIcon from '@material-ui/icons/AddCircleOutlineSharp';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Button from '../Common/Button/Button';
 
 import { getToolbarStyles } from './style';
 import setAddPersonPopup from '../../store/addPersonPopup/addPersonPopup.actions';
-
-import { colorPrimary } from '../../constants/constants';
 
 const useStyles = makeStyles(getToolbarStyles);
 
@@ -43,10 +42,14 @@ export default function PeopleTableToolbar(props) {
           </IconButton>
         </Tooltip>
       ) : (
-        <>
-          <div className={classes.addIconText}>Add person</div>
-          <AddCircleOutlineSharpIcon className={classes.addIcon} onClick={() => dispatch(setAddPersonPopup(true))} />
-        </>
+        <Button
+          variant="outlined"
+          value="add person"
+          className={classes.button}
+          endIcon={<AddCircleOutlineSharpIcon className={classes.addIcon} />}
+          onClick={() => dispatch(setAddPersonPopup(true))}
+          type="button"
+        />
       )}
     </Toolbar>
   );

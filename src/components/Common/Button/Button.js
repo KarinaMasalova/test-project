@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 
 export default function Btn(props) {
-  const { variant, color, value, onClick, className, type } = props;
+  const { variant, value, onClick, className, type, endIcon } = props;
 
   return (
     <div className={className}>
-      <Button variant={variant} color={color} onClick={onClick} type={type}>
+      <Button variant={variant} onClick={onClick} type={type} endIcon={endIcon}>
         {value}
       </Button>
     </div>
@@ -17,9 +17,10 @@ export default function Btn(props) {
 
 Btn.propTypes = {
   variant: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   className: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  endIcon: PropTypes.node
 };
