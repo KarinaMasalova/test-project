@@ -4,7 +4,7 @@ const getFiltersBlockStyles = (theme) => ({
     root: {
         padding: '5px',
         marginBottom: '20px',
-        border: '1px lightgray solid',
+        border: `1px gray solid`,
         borderRadius: '10px',
         display: 'flex',
         flexDirection: 'column'
@@ -12,9 +12,7 @@ const getFiltersBlockStyles = (theme) => ({
     headline: {
         color: colorPrimary,
         fontSize: '20px',
-        fontWeight: '600',
-        fontFamily: `"Roboto", "Helvetica", "Arial", sans-serif`,
-        padding: '5px 10px',
+        padding: '15px',
     },
     filters: {
         display: 'flex',
@@ -35,7 +33,11 @@ const getFiltersBlockStyles = (theme) => ({
     resetButton: {
         textAlign: 'right',
         margin: theme.spacing(1),
-        marginBottom: '20px'
+        marginBottom: '20px',
+        '& > button': {
+            color: colorPrimary,
+            borderColor: colorPrimary
+        }
     },
 });
 

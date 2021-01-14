@@ -11,13 +11,12 @@ export default function SimpleSelect(props) {
 
   return (
     <FormControl variant="outlined" className={className}>
-      <InputLabel color="secondary">{label}</InputLabel>
+      <InputLabel>{label}</InputLabel>
       <Select
         labelId="demo-simple-select-outlined-label"
         value={value}
         onChange={onChange}
         label={label}
-        color="secondary"
       >
         {options.map((option) => (
           <MenuItem key={option} selected={option === 'None'} value={option}>

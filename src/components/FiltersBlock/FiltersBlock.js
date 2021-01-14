@@ -10,7 +10,7 @@ import Button from '../Common/Button/Button';
 import { setFilteredPeople } from '../../store/people/people.actions';
 import { getAllPeople } from '../../store/people/people.selector';
 import getFiltersBlockStyles from './style';
-import * as constants from '../../constants/constants';
+import { roleOptions, ageOptions } from '../../constants/constants';
 
 const useStyles = makeStyles(getFiltersBlockStyles);
 
@@ -29,7 +29,7 @@ export default function PeopleOverview() {
     useEffect(() => { filterTable() }, [filters]);
 
     const filterTable = () => {
-        const ageMax = constants.ageOptions.filter((obj) => obj.label === filters.age)[0];
+        const ageMax = ageOptions.filter((obj) => obj.label === filters.age)[0];
         const filteredData = allPeopleData.filter((obj) => {
             return (obj.firstName.toLowerCase().includes(filters.name.toLowerCase()) ||
                 obj.lastName.toLowerCase().includes(filters.name.toLowerCase())) &&
@@ -56,33 +56,36 @@ export default function PeopleOverview() {
           <Input
             className={classes.formControl}
             onChange={(e) => handleFilterChange(e, 'name')}
-            label="Enter firstname / lastname..."
+            label="Firstname / lastname..."
             value={filters.name}
+            type="text"
           />
           <Input
             className={classes.formControl}
             onChange={(e) => handleFilterChange(e, 'location')}
-            label="Enter country / city..."
+            label="Country / city..."
             value={filters.location}
+            type="text"
           />
           <Select
             className={classes.formControl}
-            options={constants.ageOptions.map((obj) => obj.label)}
+            options={ageOptions.map((obj) => obj.label)}
             onChange={(e) => handleFilterChange(e, 'age')}
-            label="Select age..."
+            label="Age..."
             value={filters.age}
+            type="number"
           />
           <Select
             className={classes.formControl}
-            options={constants.roleOptions.map((obj) => obj.label)}
+            options={roleOptions.map((obj) => obj.label)}
             onChange={(e) => handleFilterChange(e, 'role')}
-            label="Select role..."
+            label="Role..."
             value={filters.role}
+            type="text"
           />
         </form>
         <Button
           variant="outlined"
-          color="secondary"
           value="Reset filters"
           onClick={handleResetButtonClick}
           className={classes.resetButton}

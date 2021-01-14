@@ -14,7 +14,6 @@ export default function Input(props) {
         label={label}
         type={type}
         variant="outlined"
-        color="secondary"
         onChange={onChange}
         value={value}
       />
@@ -27,5 +26,5 @@ Input.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
 };
