@@ -1,8 +1,8 @@
 const getPopupFormStyles = () => ({
     formControl: {
-        width: '90%',
+        width: '100%',
         textAlign: 'left',
-        margin: '8px 0',
+        margin: '8px 0 16px 0',
         '& > .MuiFormControl-root > .MuiFormLabel-root': {
             fontSize: '12px'
         },
@@ -10,6 +10,15 @@ const getPopupFormStyles = () => ({
             fontSize: '12px'
         },
     },
+    oneButton: {
+        textAlign: 'right',
+        marginLeft: '10px',
+    },
+    buttons: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        margin: '20px 0'
+    }
 });
 
 export default getPopupFormStyles;

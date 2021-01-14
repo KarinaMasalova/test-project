@@ -46,14 +46,6 @@ const getAddPersonPopupStyles = (theme) => ({
         flexDirection: 'column',
         width: '100%'
     },
-    button: {
-        textAlign: 'right',
-        marginLeft: '10px',
-    },
-    buttons: {
-        display: 'flex',
-        justifyContent: 'flex-end'
-    }
 });
 
 export default getAddPersonPopupStyles;

@@ -80,7 +80,14 @@ export default function PeopleOverview() {
             value={filters.role}
           />
         </form>
-        <Button variant="outlined" color="secondary" value="Reset filters" onClick={handleResetButtonClick} className={classes.resetButton} />
+        <Button
+          variant="outlined"
+          color="secondary"
+          value="Reset filters"
+          onClick={handleResetButtonClick}
+          className={classes.resetButton}
+          type="button"
+        />
       </div>
     );
 }
