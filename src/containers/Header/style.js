@@ -1,10 +1,10 @@
 import background from '../../mixins';
 
-const getHeaderStyles = () => ({
+const getHeaderStyles = (theme) => ({
     root: {
       display: 'flex',
       width: '100%',
-      backgroundColor: '#212121',
+      backgroundColor: theme.palette.type === 'dark' ? '#424242' : 'white',
       boxShadow: '0px 10px 13px -7px rgba(0,0,0,0.2)'
     },
     logo: {

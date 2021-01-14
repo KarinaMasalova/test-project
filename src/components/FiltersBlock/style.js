@@ -1,4 +1,4 @@
-import { colorPrimary, textShadowColor } from '../../constants/constants';
+import { colorPrimary } from '../../constants/constants';
 
 const getFiltersBlockStyles = (theme) => ({
     root: {

@@ -1,5 +1,5 @@
 import { lighten } from '@material-ui/core/styles';
-import { colorPrimary, textShadowColor } from '../../constants/constants';
+import { colorPrimary } from '../../constants/constants';
 
 const getPeopleTableStyles = (theme) => ({
   root: {

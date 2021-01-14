@@ -3,13 +3,12 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 import getTabPanelStyles from './styles';
 import tabProps from '../../utils/headerTabs/tabProps';
-import * as constants from '../../constants/constants';
+import { PEOPLE_KEY, CHARTS_KEY } from '../../constants/constants';
 
 export default function HeaderTabPanel() {
   const useStyles = makeStyles(getTabPanelStyles);
@@ -34,19 +33,17 @@ export default function HeaderTabPanel() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="secondary"
-          textColor="secondary"
-          variant="fullWidth"
-          aria-label="full width tabs example"
-        >
-          <Tab label="people" {...tabProps(constants.PEOPLE_KEY)} />
-          <Tab label="charts" {...tabProps(constants.CHARTS_KEY)} />
-        </Tabs>
-      </AppBar>
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        indicatorColor="secondary"
+        textColor="secondary"
+        variant="fullWidth"
+        aria-label="full width tabs example"
+      >
+        <Tab label="people" {...tabProps(PEOPLE_KEY)} />
+        <Tab label="charts" {...tabProps(CHARTS_KEY)} />
+      </Tabs>
     </div>
   );
 }
