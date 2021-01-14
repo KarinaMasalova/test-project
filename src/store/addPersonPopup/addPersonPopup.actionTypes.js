@@ -1,0 +1,3 @@
+const SET_ADD_PERSON_POPUP = 'SET_ADD_PERSON_POPUP';
+
+export default SET_ADD_PERSON_POPUP;

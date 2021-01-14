@@ -12,20 +12,6 @@ const getPeopleTableStyles = (theme) => ({
   },
   table: {
     minWidth: 750,
-    '& .MuiTableCell-root': {
-      fontSize: '12px',
-    },
-    '&::-webkit-scrollbar': {
-      height: '1px',
-    },
-    '&::-webkit-scrollbar-track': {
-      backgroundColor: 'rgba(0,0,0,0.1)',
-      borderRadius: '5px'
-    },
-    '&::-webkit-scrollbar-thumb': {
-      borderRadius: '5px',
-      backgroundColor: `${constants.colorSecondary}`
-    }
   },
   tableCellFirstname: {
     paddingLeft: '18px'
@@ -70,7 +56,7 @@ const getToolbarStyles = (theme) => ({
     textShadow: `${constants.textShadowColor} 1px 0 10px`,
   },
   addIcon: {
-    color: constants.colorSecondary,
+    color: constants.colorPrimary,
     width: '20px',
     height: '20px',
     marginRight: '20px',
@@ -80,7 +66,7 @@ const getToolbarStyles = (theme) => ({
     }
   },
   addIconText: {
-    color: constants.colorSecondary,
+    color: constants.colorPrimary,
     width: '10%',
   }
 });

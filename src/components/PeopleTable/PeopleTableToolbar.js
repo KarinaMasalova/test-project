@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
@@ -12,12 +12,14 @@ import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 import { getToolbarStyles } from './style';
+import setAddPersonPopup from '../../store/addPersonPopup/addPersonPopup.actions';
 
 const useStyles = makeStyles(getToolbarStyles);
 
 export default function PeopleTableToolbar(props) {
   const { numSelected } = props;
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   return (
     <Toolbar
@@ -45,9 +47,7 @@ export default function PeopleTableToolbar(props) {
       ) : (
         <>
           <div className={classes.addIconText}>Add person</div>
-          <Link to="/add">
-            <AddCircleOutlineSharpIcon className={classes.addIcon} />
-          </Link>
+          <AddCircleOutlineSharpIcon className={classes.addIcon} onClick={() => dispatch(setAddPersonPopup(true))} />
         </>
       )}
     </Toolbar>

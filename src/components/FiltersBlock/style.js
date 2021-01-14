@@ -1,4 +1,4 @@
-import { colorSecondary } from '../../constants/constants';
+import { primaryColor } from '../../constants/constants';
 
 const getFiltersBlockStyles = (theme) => ({
     root: {
@@ -10,7 +10,7 @@ const getFiltersBlockStyles = (theme) => ({
         flexDirection: 'column'
     },
     headline: {
-        color: colorSecondary,
+        color: primaryColor,
         fontSize: '20px',
         fontWeight: '600',
         fontFamily: `"Roboto", "Helvetica", "Arial", sans-serif`,
