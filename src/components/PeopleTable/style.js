@@ -12,6 +12,9 @@ const getPeopleTableStyles = (theme) => ({
   },
   table: {
     minWidth: 750,
+    '& .MuiTableCell-root': {
+      fontSize: '12px',
+    },
     '&::-webkit-scrollbar': {
       height: '1px',
     },
