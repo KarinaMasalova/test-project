@@ -36,6 +36,11 @@ export default function PeopleTable() {
 
   const isSelected = (name) => selected.findIndex((selectedValue) => name === selectedValue) !== -1;
 
+  const convertTimeStamp = (value) => {
+    const date = new Date(value * 1000);
+    return date.toDateString();
+  }
+
   useEffect(() => {
     loadPeopleData()
       .then((data) => {
@@ -142,7 +147,7 @@ export default function PeopleTable() {
                         {person.firstName + ' ' + person.lastName}
                       </TableCell>
                       <TableCell align="left">{person.role}</TableCell>
-                      <TableCell align="left">{person.lastLoggedIn}</TableCell>
+                      <TableCell align="left">{convertTimeStamp(person.lastLoggedIn)}</TableCell>
                       <TableCell align="left">{person.profileViews}</TableCell>
                       <TableCell align="left">{person.age}</TableCell>
                       <TableCell align="left">{person.country}</TableCell>
@@ -151,7 +156,7 @@ export default function PeopleTable() {
                       <TableCell align="left">{person.phone}</TableCell>
                       <TableCell align="left">{person.company}</TableCell>
                       <TableCell align="left">
-                        {person.connections.length === 0 ? 'none' : person.connections.map((person) => person.fullName)}
+                        {person.connections.length === 0 ? '' : person.connections.map((person) => person.fullName)}
                       </TableCell>
                     </TableRow>
                   );
