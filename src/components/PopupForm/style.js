@@ -1,3 +1,5 @@
+import { colorPrimary } from "../../constants/constants";
+
 const getPopupFormStyles = () => ({
     formControl: {
         width: '100%',
@@ -8,6 +10,12 @@ const getPopupFormStyles = () => ({
         '& > .MuiFormLabel-root': {
             fontSize: '16px',
         },
+        '& > .MuiFormControl-root > .MuiFormLabel-root.Mui-focused': {
+           color: colorPrimary,
+        },
+        '& > .MuiFormControl-root > .MuiInputBase-root > .MuiOutlinedInput-notchedOutline': {
+            borderColor: colorPrimary,
+        }
     },
 });
 

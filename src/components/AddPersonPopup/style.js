@@ -15,6 +15,15 @@ const getAddPersonPopupStyles = () => ({
     },
     button: {
         padding: '10px',
+        '& > .MuiButton-outlined': {
+            color: colorPrimary,
+            borderColor: colorPrimary,
+        },
+        '& > .MuiButton-contained': {
+            borderColor: colorPrimary,
+            backgroundColor: colorPrimary,
+            color: 'white',
+        }
     },
 });
 

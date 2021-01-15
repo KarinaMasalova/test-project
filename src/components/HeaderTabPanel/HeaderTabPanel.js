@@ -34,10 +34,9 @@ export default function HeaderTabPanel() {
   return (
     <div className={classes.root}>
       <Tabs
+        className={classes.tabs}
         value={value}
         onChange={handleChange}
-        indicatorColor="secondary"
-        textColor="secondary"
         variant="fullWidth"
         aria-label="full width tabs example"
       >
