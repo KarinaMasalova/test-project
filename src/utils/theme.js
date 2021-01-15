@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { colorPrimary } from '../constants/constants';
+import { colorPrimary, colorPrimaryRgba } from '../constants/constants';
 
 export default function getTheme() {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -12,6 +12,11 @@ export default function getTheme() {
             type: dark ? 'dark' : 'light',
         },
         overrides: {
+            MuiPaper: {
+                elevation1: {
+                    boxShadow: 'none',
+                }
+            },
             MuiButton: {
                 contained: {
                     borderColor: colorPrimary,
@@ -24,6 +29,9 @@ export default function getTheme() {
                 }
             },
             MuiTypography: {
+                colorInherit: {
+                    fontSize: '1.5rem',
+                },
                 h6: {
                     fontSize: '3rem',
                 }
@@ -76,6 +84,35 @@ export default function getTheme() {
                 },
                 track: {
                     color: colorPrimary,
+                }
+            },
+            MuiTableCell: {
+                root: {
+                    fontSize: '1.4rem',
+                },
+            },
+            MuiTableRow: {
+                root: {
+                    '&.Mui-selected': {
+                        backgroundColor: colorPrimaryRgba,
+                        '&:hover': {
+                            backgroundColor: colorPrimaryRgba,
+                        }
+                    }
+                }
+            },
+            MuiCheckbox: {
+                colorSecondary: {
+                    '&.Mui-checked': {
+                        color: colorPrimary,
+                    }
+                }
+            },
+            MuiIconButton: {
+                colorSecondary: {
+                    '&:hover': {
+                        backgroundColor: colorPrimaryRgba,
+                    }
                 }
             }
         }

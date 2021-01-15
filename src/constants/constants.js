@@ -1,6 +1,7 @@
 export const url = 'https://5ff1d38edb1158001748b5c2.mockapi.io/api/v1/users/';
 
 export const colorPrimary = '#fc4a1f';
+export const colorPrimaryRgba = 'rgba(252,74,31,0.3)';
 export const menuItemHeight = 48;
 
 export const PEOPLE_KEY = 'people';

@@ -45,7 +45,6 @@ export default function PeopleTableToolbar(props) {
         <Button
           variant="outlined"
           value="add person"
-          className={classes.button}
           endIcon={<AddCircleOutlineSharpIcon className={classes.addIcon} />}
           onClick={() => dispatch(setAddPersonPopup(true))}
           type="button"

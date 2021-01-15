@@ -38,26 +38,15 @@ const getToolbarStyles = (theme) => ({
     width: '100%',
     padding: theme.spacing(3),
   },
-  highlight:
-    theme.palette.type === 'light'
-      ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
-        }
-      : {
-          color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark,
-        },
+  highlight: {
+    color: theme.palette.type === 'light' ? theme.palette.secondary.main : theme.palette.text.primary,
+    backgroundColor: theme.palette.type === 'light' ? lighten(colorPrimary, 0.5) : colorPrimary,
+    justifyContent: 'space-between',
+  },
   addIcon: {
     color: colorPrimary,
     width: '20px',
     height: '20px',
-  },
-  button: {
-    '& > button': {
-      borderColor: colorPrimary,
-      color: colorPrimary,
-    }
   },
 });
 
