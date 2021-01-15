@@ -101,6 +101,17 @@ export default function getTheme() {
                 root: {
                     fontSize: '1.4rem',
                 },
+                head: {
+                    color: colorPrimary,
+                }
+            },
+            MuiTableSortLabel: {
+                root: {
+                    fontSize: '1.7rem',
+                    '&:hover': {
+                        color: colorPrimaryRgba,
+                    }
+                }
             },
             MuiTableRow: {
                 root: {
