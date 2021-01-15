@@ -17,8 +17,8 @@ import { getComparator, tableSort } from './sorting';
 import PeopleTableHead from './PeopleTableHead';
 import PeopleTableToolbar from './PeopleTableToolbar';
 
-import { setAllPeople, setFilteredPeople } from '../../store/people/people.actions';
-import { getFilteredPeople } from '../../store/people/people.selector';
+import { setAllPeople, setFilteredPeople, setSelectedPeople } from '../../store/people/people.actions';
+import { getFilteredPeople, getSelectedPeople } from '../../store/people/people.selector';
 import setErrorSnackbar from '../../store/errorSnackbar/errorSnackbar.actions';
 
 const useStyles = makeStyles(getPeopleTableStyles);
@@ -28,13 +28,13 @@ export default function PeopleTable() {
   const classes = useStyles();
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('');
-  const [selected, setSelected] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const allPeopleData = useSelector(getFilteredPeople);
+  const selectedPeople = useSelector(getSelectedPeople);
 
-  const isSelected = (name) => selected.findIndex((selectedValue) => name === selectedValue) !== -1;
+  const isSelected = (name) => selectedPeople.findIndex((selectedValue) => name === selectedValue) !== -1;
 
   const convertTimeStamp = (value) => {
     const date = new Date(value * 1000);
@@ -59,34 +59,34 @@ export default function PeopleTable() {
     setOrderBy(property);
   };
 
-  const handleSelectAllClick = (event) => {
+  const handleSelectAllRowsClick = (event) => {
     if (event.target.checked) {
       const newSelecteds = allPeopleData.map((n) => n.firstName);
-      setSelected(newSelecteds);
+      dispatch(setSelectedPeople(newSelecteds));
       return;
     }
-    setSelected([]);
+    dispatch(setSelectedPeople([]));
   };
 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.findIndex((selectedValue) => selectedValue === name);
+  const handleRowClick = (event, name) => {
+    const selectedIndex = selectedPeople.findIndex((selectedValue) => selectedValue === name);
     let newSelected = [];
 
     if (selectedIndex === -1) {
-      newSelected = [...newSelected, ...selected, name];
+      newSelected = [...newSelected, ...selectedPeople, name];
     } else if (selectedIndex === 0) {
-      newSelected = [...newSelected, ...selected.slice(1)];
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = [...newSelected, ...selected.slice(0, -1)];
+      newSelected = [...newSelected, ...selectedPeople.slice(1)];
+    } else if (selectedIndex === selectedPeople.length - 1) {
+      newSelected = [...newSelected, ...selectedPeople.slice(0, -1)];
     } else if (selectedIndex > 0) {
       newSelected = [
         ...newSelected,
-        ...selected.slice(0, selectedIndex),
-        ...selected.slice(selectedIndex + 1),
+        ...selectedPeople.slice(0, selectedIndex),
+        ...selectedPeople.slice(selectedIndex + 1),
       ];
     }
 
-    setSelected(newSelected);
+    dispatch(setSelectedPeople(newSelected));
   };
 
   const handleChangePage = (event, newPage) => setPage(newPage);
@@ -101,7 +101,7 @@ export default function PeopleTable() {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <PeopleTableToolbar numSelected={selected.length} />
+        <PeopleTableToolbar numSelected={selectedPeople.length} />
         <TableContainer className={classes.table}>
           <Table
             className={classes.table}
@@ -110,10 +110,10 @@ export default function PeopleTable() {
           >
             <PeopleTableHead
               classes={classes}
-              numSelected={selected.length}
+              numSelected={selectedPeople.length}
               order={order}
               orderBy={orderBy}
-              onSelectAllClick={handleSelectAllClick}
+              onSelectAllClick={handleSelectAllRowsClick}
               onRequestSort={handleRequestSort}
               rowCount={allPeopleData.length}
             />
@@ -121,13 +121,13 @@ export default function PeopleTable() {
               {tableSort(allPeopleData, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((person, index) => {
-                  const isItemSelected = isSelected(person.firstName);
+                  const isItemSelected = isSelected(person);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, person.firstName)}
+                      onClick={(event) => handleRowClick(event, person)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}

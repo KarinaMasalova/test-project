@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
@@ -14,6 +14,10 @@ import Button from '../Common/Button/Button';
 
 import { getToolbarStyles } from './style';
 import setAddPersonPopup from '../../store/addPersonPopup/addPersonPopup.actions';
+import { getSelectedPeople } from '../../store/people/people.selector';
+
+import Service from '../../utils/service';
+import { url } from '../../constants/constants';
 
 const useStyles = makeStyles(getToolbarStyles);
 
@@ -21,6 +25,10 @@ export default function PeopleTableToolbar(props) {
   const { numSelected } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
+  const service = new Service();
+  const selectedPeople = useSelector(getSelectedPeople);
+
+  const deletePeople = () => selectedPeople.map((person) => service.delete(url, person.id));
 
   return (
     <Toolbar
@@ -37,7 +45,7 @@ export default function PeopleTableToolbar(props) {
 
       { numSelected > 0 ? (
         <Tooltip title="Delete">
-          <IconButton aria-label="delete">
+          <IconButton aria-label="delete" onClick={deletePeople}>
             <DeleteIcon />
           </IconButton>
         </Tooltip>

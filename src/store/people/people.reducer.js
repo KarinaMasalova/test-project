@@ -1,6 +1,7 @@
 const initialState = {
     allPeople: [],
-    filteredPeople: []
+    filteredPeople: [],
+    selectedPeople: [],
 };
 
 export default function peopleReducer(state = initialState, action) {
@@ -14,6 +15,11 @@ export default function peopleReducer(state = initialState, action) {
             return {
                 ...state,
                 filteredPeople: action.payload
+            }
+        case "SET_SELECTED_PEOPLE":
+            return {
+                ...state,
+               selectedPeople: action.payload
             }
         default:
             return state;

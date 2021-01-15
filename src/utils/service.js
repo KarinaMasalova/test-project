@@ -13,8 +13,8 @@ export default class Service {
         .catch((err) => Promise.reject(err));
     }
 
-    get(url) {
-        return fetch(url, {
+    get(url, id) {
+        return fetch(`${url}/${id}`, {
             method: "GET",
             headers: this.headers,
         })
@@ -22,8 +22,8 @@ export default class Service {
         .catch((err) => Promise.reject(err));
     }
 
-    delete(url) {
-        return fetch(url, {
+    delete(url, id) {
+        return fetch(`${url}/${id}`, {
             method: "DELETE",
             headers: this.headers,
         })
