@@ -64,6 +64,19 @@ export default function getTheme() {
                     padding: '18px 14px',
                     borderColor: colorPrimary
                 },
+            },
+            MuiSwitch: {
+                colorSecondary: {
+                    '&.Mui-checked': {
+                        color: colorPrimary,
+                        '& + .MuiSwitch-track': {
+                            backgroundColor: colorPrimary,
+                        }
+                    }
+                },
+                track: {
+                    color: colorPrimary,
+                }
             }
         }
     });
