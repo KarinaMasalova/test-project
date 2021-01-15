@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -12,9 +13,9 @@ export default function Header() {
   const classes = useStyles();
   return (
     <header className={classes.root}>
-      <div className={classes.logo}>
+      <Link to="/" className={classes.logo}>
         <span className={classes.logoImage} />
-      </div>
+      </Link>
       <HeaderTabPanel />
       <HeaderOptionsMenu />
     </header>
