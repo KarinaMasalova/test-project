@@ -146,7 +146,7 @@ export default function PeopleTable() {
                       <TableCell component="th" align="left" className={classes.tableCellName}>
                         {person.firstName + ' ' + person.lastName}
                       </TableCell>
-                      <TableCell align="left">{person.role}</TableCell>
+                      <TableCell align="left">{person.role.replace(/(^\w{1})/g, (letter) => letter.toUpperCase())}</TableCell>
                       <TableCell align="left">{convertTimeStamp(person.lastLoggedIn)}</TableCell>
                       <TableCell align="left">{person.profileViews}</TableCell>
                       <TableCell align="left">{person.age}</TableCell>
