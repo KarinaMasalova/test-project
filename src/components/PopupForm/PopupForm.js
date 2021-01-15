@@ -47,6 +47,7 @@ export default function PopupForm() {
         label="Firstname..."
         type="text"
         onChange={(e) => setPersonToAdd({...personToAdd, firstName: e.target.value})}
+        value={personToAdd.firstName}
       />
       <Typography color="textSecondary" variant="h5">Your lastname:</Typography>
       <Input
@@ -54,6 +55,7 @@ export default function PopupForm() {
         label="Lastname..."
         type="text"
         onChange={(e) => setPersonToAdd({...personToAdd, lastName: e.target.value})}
+        value={personToAdd.lastName}
       />
       <Typography color="textSecondary" variant="h5">Your role:</Typography>
       <Select
@@ -61,6 +63,7 @@ export default function PopupForm() {
         options={roleOptions.map((obj) => obj.label)}
         label="Role..."
         onChange={(e) => setPersonToAdd({...personToAdd, role: e.target.value})}
+        value={personToAdd.role}
       />
       <Typography color="textSecondary" variant="h5">Your age:</Typography>
       <Input
@@ -68,6 +71,7 @@ export default function PopupForm() {
         label="Age..."
         type="number"
         onChange={(e) => setPersonToAdd({...personToAdd, age: e.target.value})}
+        value={personToAdd.age}
       />
       <Typography color="textSecondary" variant="h5">Your country:</Typography>
       <Input
@@ -75,6 +79,7 @@ export default function PopupForm() {
         label="Country..."
         type="text"
         onChange={(e) => setPersonToAdd({...personToAdd, country: e.target.value})}
+        value={personToAdd.country}
       />
       <Typography color="textSecondary" variant="h5">Your city:</Typography>
       <Input
@@ -82,6 +87,7 @@ export default function PopupForm() {
         label="City..."
         type="text"
         onChange={(e) => setPersonToAdd({...personToAdd, city: e.target.value})}
+        value={personToAdd.city}
       />
       <Typography color="textSecondary" variant="h5">Your address:</Typography>
       <Input
@@ -89,6 +95,7 @@ export default function PopupForm() {
         label="Address..."
         type="text"
         onChange={(e) => setPersonToAdd({...personToAdd, address: e.target.value})}
+        value={personToAdd.address}
       />
       <Typography color="textSecondary" variant="h5">Your phone number:</Typography>
       <Input
@@ -96,6 +103,7 @@ export default function PopupForm() {
         label="Phone number..."
         type="text"
         onChange={(e) => setPersonToAdd({...personToAdd, phone: e.target.value})}
+        value={personToAdd.phone}
       />
       <Typography color="textSecondary" variant="h5">Your company:</Typography>
       <Input
@@ -103,10 +111,18 @@ export default function PopupForm() {
         label="Company..."
         type="text"
         onChange={(e) => setPersonToAdd({...personToAdd, company: e.target.value})}
+        value={personToAdd.company}
+      />
+      <Input
+        className={classes.formControl}
+        label="Link to photo..."
+        type="url"
+        onChange={(e) => setPersonToAdd({...personToAdd, avatar: e.target.value})}
+        value={personToAdd.avatar}
       />
       <DialogActions>
-        <Button onClick={closeModal} color="secondary" value="cancel" variant="outlined" type="button" />
-        <Button onClick={closeModal} color="secondary" value="add" variant="contained" type="submit" />
+        <Button onClick={closeModal} value="cancel" variant="outlined" type="button" />
+        <Button onClick={closeModal} value="add" variant="contained" type="submit" />
       </DialogActions>
     </form>
   );
