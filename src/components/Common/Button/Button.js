@@ -19,7 +19,8 @@ Btn.propTypes = {
   variant: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  className: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  className: PropTypes.string,
   type: PropTypes.string.isRequired,
   // eslint-disable-next-line react/require-default-props
   endIcon: PropTypes.node
