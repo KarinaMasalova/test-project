@@ -8,9 +8,6 @@ const getTabPanelStyles = (theme) => ({
     },
     tabs: {
         color: colorPrimary,
-        '& > .MuiTabs-scroller > .MuiTabs-indicator': {
-            backgroundColor: colorPrimary,
-        }
     }
 });
 

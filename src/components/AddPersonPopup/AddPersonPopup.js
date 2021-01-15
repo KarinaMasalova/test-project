@@ -28,7 +28,7 @@ export default function FormDialog() {
     <div>
       <Dialog open={isOpened} onClose={closeModal} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title" className={classes.dialogTitle}>Add person</DialogTitle>
-        <DialogContent className={classes.description}>
+        <DialogContent>
           <DialogContentText>
             To add a person, please enter all the necessary information.
           </DialogContentText>

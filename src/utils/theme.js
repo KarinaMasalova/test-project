@@ -1,5 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { colorPrimary } from '../constants/constants';
 
 export default function getTheme() {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -10,5 +11,60 @@ export default function getTheme() {
         palette: {
             type: dark ? 'dark' : 'light',
         },
+        overrides: {
+            MuiButton: {
+                contained: {
+                    borderColor: colorPrimary,
+                    backgroundColor: colorPrimary,
+                    color: 'white',
+                },
+                outlined: {
+                    color: colorPrimary,
+                    borderColor: colorPrimary,
+                }
+            },
+            MuiTypography: {
+                h6: {
+                    fontSize: '3rem',
+                }
+            },
+            MuiDialogContentText: {
+                root: {
+                    fontSize: '2.25rem',
+                    marginBottom: '30px',
+                }
+            },
+            MuiFormLabel: {
+                root: {
+                    fontSize: '16px',
+                    '&.Mui-focused': {
+                        color: colorPrimary,
+                    }
+                }
+            },
+            MuiTabs: {
+                indicator: {
+                    backgroundColor: colorPrimary,
+                }
+            },
+            MuiInputBase: {
+                root: {
+                    '&.MuiOutlinedInput-root.Mui-focused': {
+                        '& .MuiOutlinedInput-notchedOutline': {
+                            borderColor: colorPrimary
+                        }
+                    }
+                },
+                input: {
+                    height: '1.7em',
+                }
+            },
+            MuiOutlinedInput: {
+                input: {
+                    padding: '18px 14px',
+                    borderColor: colorPrimary
+                },
+            }
+        }
     });
 }
