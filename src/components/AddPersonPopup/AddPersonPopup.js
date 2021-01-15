@@ -3,11 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { makeStyles } from '@material-ui/styles';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Button from '../Common/Button/Button';
 
 import getAddPersonPopupStyles from './style';
 
@@ -34,10 +32,6 @@ export default function FormDialog() {
           </DialogContentText>
           <PopupForm />
         </DialogContent>
-        <DialogActions>
-          <Button onClick={closeModal} color="secondary" value="cancel" variant="outlined" type="button" className={classes.button} />
-          <Button onClick={closeModal} color="secondary" value="add" variant="contained" type="submit" className={classes.button} />
-        </DialogActions>
       </Dialog>
     </div>
   );
