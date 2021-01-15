@@ -65,6 +65,7 @@ export default function getTheme() {
                 },
                 input: {
                     height: '1.7em',
+                    fontSize: '13px',
                 }
             },
             MuiOutlinedInput: {
@@ -72,6 +73,16 @@ export default function getTheme() {
                     padding: '18px 14px',
                     borderColor: colorPrimary
                 },
+            },
+            MuiSelect: {
+                selectMenu: {
+                    height: '1.7rem',
+                }
+            },
+            MuiMenuItem: {
+                root: {
+                    fontSize: '1.3rem'
+                }
             },
             MuiSwitch: {
                 colorSecondary: {
