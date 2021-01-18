@@ -36,7 +36,10 @@ export default function PopupForm() {
     connections: ''
   });
 
-  const addPerson = () => service.post(url, personToAdd);
+  const addPerson = (e) => {
+    e.preventDefault();
+    service.post(url, personToAdd);
+  }
 
   const closeModal = () => dispatch(setAddPersonPopup(false));
 
