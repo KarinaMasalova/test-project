@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { colorPrimary, colorPrimaryRgba } from '../constants/constants';
+import { colorInputAutofill, colorPrimary, colorPrimaryRgba } from '../constants/constants';
 
 export default function getTheme() {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -71,7 +71,10 @@ export default function getTheme() {
             MuiOutlinedInput: {
                 input: {
                     padding: '18px 14px',
-                    borderColor: colorPrimary
+                    borderColor: colorPrimary,
+                    '&:-webkit-autofill': {
+                        '-webkit-box-shadow': `0 0 0 100px ${colorInputAutofill} inset`,
+                    }
                 },
             },
             MuiSelect: {
