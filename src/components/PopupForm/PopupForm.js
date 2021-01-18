@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -12,6 +12,7 @@ import getPopupFormStyles from './style';
 import { roleOptions, url } from '../../constants/constants';
 import Service from '../../utils/service';
 import setAddPersonPopup from '../../store/addPersonPopup/addPersonPopup.actions';
+import { getAllPeople } from '../../store/people/people.selector';
 
 const useStyles = makeStyles(getPopupFormStyles);
 
@@ -24,7 +25,7 @@ export default function PopupForm() {
     firstName: '',
     lastName: '',
     role: '',
-    lastLoggedIn: '',
+    lastLoggedIn: new Date().toDateString(),
     profileViews: 0,
     age: '',
     country: '',
@@ -32,12 +33,15 @@ export default function PopupForm() {
     address: '',
     phone: '',
     company: '',
-    connections: ''
+    connections: []
   });
 
   const addPerson = () => service.post(url, personToAdd);
 
   const closeModal = () => dispatch(setAddPersonPopup(false));
+
+  const allPeople = useSelector(getAllPeople);
+  console.log(personToAdd, allPeople);
 
   return (
     <form method="POST" onSubmit={addPerson}>
@@ -119,6 +123,13 @@ export default function PopupForm() {
         type="url"
         onChange={(e) => setPersonToAdd({...personToAdd, avatar: e.target.value})}
         value={personToAdd.avatar}
+      />
+      <Select
+        className={classes.formControl}
+        options={allPeople.map((obj) => obj.firstName + ' ' + obj.lastName)}
+        label="Connections..."
+        onChange={(e) => setPersonToAdd({...personToAdd, connections: e.target.value})}
+        value={personToAdd.connections}
       />
       <DialogActions>
         <Button onClick={closeModal} value="cancel" variant="outlined" type="button" />
