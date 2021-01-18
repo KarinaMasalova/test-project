@@ -80,6 +80,11 @@ export default function getTheme() {
             MuiSelect: {
                 selectMenu: {
                     height: '1.7rem',
+                },
+                select: {
+                    '&:focus': {
+                        backgroundColor: colorInputAutofill
+                    }
                 }
             },
             MuiMenuItem: {

@@ -33,7 +33,7 @@ export default function PopupForm() {
     address: '',
     phone: '',
     company: '',
-    connections: []
+    connections: ''
   });
 
   const addPerson = () => service.post(url, personToAdd);
@@ -41,10 +41,10 @@ export default function PopupForm() {
   const closeModal = () => dispatch(setAddPersonPopup(false));
 
   const allPeople = useSelector(getAllPeople);
-  console.log(personToAdd, allPeople);
+  console.log(allPeople);
 
   return (
-    <form method="POST" onSubmit={addPerson}>
+    <form method="POST" action="/" onSubmit={addPerson}>
       <Typography color="textSecondary" variant="h5">Your firstname:</Typography>
       <Input
         className={classes.formControl}
@@ -117,6 +117,7 @@ export default function PopupForm() {
         onChange={(e) => setPersonToAdd({...personToAdd, company: e.target.value})}
         value={personToAdd.company}
       />
+      <Typography color="textSecondary" variant="h5">Your photo:</Typography>
       <Input
         className={classes.formControl}
         label="Link to photo..."
@@ -124,11 +125,13 @@ export default function PopupForm() {
         onChange={(e) => setPersonToAdd({...personToAdd, avatar: e.target.value})}
         value={personToAdd.avatar}
       />
+      <Typography color="textSecondary" variant="h5">Your connections:</Typography>
       <Select
         className={classes.formControl}
         options={allPeople.map((obj) => obj.firstName + ' ' + obj.lastName)}
         label="Connections..."
         onChange={(e) => setPersonToAdd({...personToAdd, connections: e.target.value})}
+        // onChange={(e) => setPersonToAdd({...personToAdd, connections: [...personToAdd.connections, {id: '', fullName: e.target.value}]})}
         value={personToAdd.connections}
       />
       <DialogActions>
