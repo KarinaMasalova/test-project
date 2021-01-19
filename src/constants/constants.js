@@ -22,13 +22,13 @@ export const headCells = [
     { id: 'connections', disablePadding: false, label: 'Connections' },
 ];
 export const ageOptions = [
-    { label: "< 18", maxValue: 18 },
-    { label: "< 25", maxValue: 25 },
-    { label: "< 35", maxValue: 35 },
-    { label: "< 50", maxValue: 50 },
-    { label: "< 100", maxValue: 100 }
+    { id: 0, label: "< 18", maxValue: 18 },
+    { id: 1, label: "< 25", maxValue: 25 },
+    { id: 2, label: "< 35", maxValue: 35 },
+    { id: 3, label: "< 50", maxValue: 50 },
+    { id: 4, label: "< 100", maxValue: 100 }
 ];
 export const roleOptions = [
-    { label: "lawyer" },
-    { label: "client" }
+    { id: 0, label: "lawyer" },
+    { id: 1, label: "client" }
 ];

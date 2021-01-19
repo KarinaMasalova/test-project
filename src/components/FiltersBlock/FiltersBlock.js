@@ -20,10 +20,10 @@ export default function PeopleOverview() {
     const allPeopleData = useSelector(getAllPeople);
 
     const [filters, setFilters] = useState({
-        name: '',
-        location: '',
-        age: '',
-        role: ''
+      name: '',
+      location: '',
+      age: '',
+      role: ''
     });
 
     useEffect(() => { filterTable() }, [filters]);
@@ -41,9 +41,9 @@ export default function PeopleOverview() {
       dispatch(setFilteredPeople(filteredData));
     }
 
-    const handleFilterChange = (e, filter) => {
+    const handleFilterChange = (event, filter) => {
         const obj = { ...filters };
-        obj[filter] = e.target.value;
+        obj[filter] = event;
         setFilters(obj);
     }
 
@@ -69,18 +69,26 @@ export default function PeopleOverview() {
           />
           <Select
             className={classes.formControl}
-            options={ageOptions.map((obj) => obj.label)}
+            options={ageOptions.map((obj) => ({
+              id: obj.id,
+              label: obj.label,
+              content: obj.label
+            }))}
             onChange={(e) => handleFilterChange(e, 'age')}
             label="Age..."
-            value={filters.age}
+            value={filters.age.id}
             type="number"
           />
           <Select
             className={classes.formControl}
-            options={roleOptions.map((obj) => obj.label)}
+            options={roleOptions.map((obj) => ({
+              id: obj.id,
+              label: obj.label,
+              content: obj.label
+            }))}
             onChange={(e) => handleFilterChange(e, 'role')}
             label="Role..."
-            value={filters.role}
+            value={filters.role.id}
             type="text"
           />
         </form>

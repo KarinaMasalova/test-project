@@ -7,7 +7,18 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 export default function SimpleSelect(props) {
-  const { options, onChange, label, value, className } = props;
+  const { options, onChange, label, value = '', className, multiple } = props;
+
+  const handleChange = (e) => {
+    const value = e.target.value; // array if multiple, else id
+    let object;
+    if (Array.isArray(value)) {
+      object = value.map((val) => options.find((option) => option.id === val));
+    } else {
+      object = options.find((option) => option.id === value);
+    }
+    onChange(object);
+  }
 
   return (
     <FormControl variant="outlined" className={className}>
@@ -15,12 +26,13 @@ export default function SimpleSelect(props) {
       <Select
         labelId="demo-simple-select-outlined-label"
         value={value}
-        onChange={onChange}
+        onChange={handleChange}
         label={label}
+        multiple={multiple}
       >
         {options.map((option) => (
-          <MenuItem key={option} selected={option === 'None'} value={option}>
-            {option}
+          <MenuItem key={option.id} value={option.id}> {/* value goes to e.target.value */}
+            {option.content}
           </MenuItem>
         ))}
       </Select>
@@ -34,5 +46,7 @@ SimpleSelect.propTypes = {
   options: PropTypes.array.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired
+  className: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  multiple: PropTypes.bool,
 };

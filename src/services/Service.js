@@ -13,7 +13,16 @@ export default class Service {
         .catch((err) => Promise.reject(err));
     }
 
-    get(url, id) {
+    get(url) {
+        return fetch(url, {
+            method: "GET",
+            headers: this.headers,
+        })
+        .then((response) => response.json())
+        .catch((err) => Promise.reject(err));
+    }
+
+    getById(url, id) {
         return fetch(`${url}/${id}`, {
             method: "GET",
             headers: this.headers,
@@ -31,3 +40,5 @@ export default class Service {
         .catch((err) => Promise.reject(err));
     }
 }
+
+export const service = new Service();

@@ -12,7 +12,7 @@ import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 
 import { getPeopleTableStyles } from './style';
-import loadPeopleData from '../../utils/api';
+import { peopleService } from '../../services/PeopleService';
 import { getComparator, tableSort } from './sorting';
 import PeopleTableHead from './PeopleTableHead';
 import PeopleTableToolbar from './PeopleTableToolbar';
@@ -42,7 +42,7 @@ export default function PeopleTable() {
   }
 
   useEffect(() => {
-    loadPeopleData()
+    peopleService.loadPeopleData()
       .then((data) => {
         dispatch(setAllPeople(data));
         dispatch(setFilteredPeople(data));

@@ -16,7 +16,7 @@ import { getToolbarStyles } from './style';
 import setAddPersonPopup from '../../store/addPersonPopup/addPersonPopup.actions';
 import { getSelectedPeople } from '../../store/people/people.selector';
 
-import Service from '../../utils/service';
+import { service } from '../../services/Service';
 import { url } from '../../constants/constants';
 
 const useStyles = makeStyles(getToolbarStyles);
@@ -25,7 +25,6 @@ export default function PeopleTableToolbar(props) {
   const { numSelected } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
-  const service = new Service();
   const selectedPeople = useSelector(getSelectedPeople);
 
   const deletePeople = () => selectedPeople.map((person) => service.delete(url, person.id));

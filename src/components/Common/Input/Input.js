@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 
 export default function Input(props) {
-  const { onChange, label, value, className, type } = props;
+  const { onChange, label, value = '', className, type } = props;
 
   return (
     <FormControl variant="outlined" className={className}>

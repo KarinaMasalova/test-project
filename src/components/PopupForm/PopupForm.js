@@ -10,7 +10,7 @@ import Input from '../Common/Input/Input';
 import Button from '../Common/Button/Button';
 import getPopupFormStyles from './style';
 import { roleOptions, url } from '../../constants/constants';
-import Service from '../../utils/service';
+import  { service } from '../../services/Service';
 import setAddPersonPopup from '../../store/addPersonPopup/addPersonPopup.actions';
 import { getAllPeople } from '../../store/people/people.selector';
 
@@ -19,7 +19,6 @@ const useStyles = makeStyles(getPopupFormStyles);
 export default function PopupForm() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const service = new Service();
   const [personToAdd, setPersonToAdd] = useState({
     avatar: '',
     firstName: '',
@@ -33,7 +32,7 @@ export default function PopupForm() {
     address: '',
     phone: '',
     company: '',
-    connections: ''
+    connections: []
   });
 
   const addPerson = (e) => {
@@ -44,7 +43,14 @@ export default function PopupForm() {
   const closeModal = () => dispatch(setAddPersonPopup(false));
 
   const allPeople = useSelector(getAllPeople);
-  console.log(allPeople);
+
+  const handleChangeConnectionsSelect = (value) => {
+    setPersonToAdd({...personToAdd, connections: value});
+  }
+
+  const handleChangeRoleSelect = (value) => {
+    setPersonToAdd({...personToAdd, role: value.label})
+  }
 
   return (
     <form method="POST" action="/" onSubmit={addPerson}>
@@ -67,18 +73,22 @@ export default function PopupForm() {
       <Typography color="textSecondary" variant="h5">Your role:</Typography>
       <Select
         className={classes.formControl}
-        options={roleOptions.map((obj) => obj.label)}
+        options={roleOptions.map((obj) => ({
+          id: obj.id,
+          label: obj.label,
+          content: obj.label
+        }))}
         label="Role..."
-        onChange={(e) => setPersonToAdd({...personToAdd, role: e.target.value})}
-        value={personToAdd.role}
+        onChange={handleChangeRoleSelect}
+        value={personToAdd.role.id}
       />
       <Typography color="textSecondary" variant="h5">Your age:</Typography>
       <Input
         className={classes.formControl}
         label="Age..."
         type="number"
-        onChange={(e) => setPersonToAdd({...personToAdd, age: e.target.value})}
-        value={personToAdd.age}
+        onChange={(e) => setPersonToAdd({...personToAdd, age: +e.target.value})}
+        value={personToAdd.age.toString()}
       />
       <Typography color="textSecondary" variant="h5">Your country:</Typography>
       <Input
@@ -131,11 +141,15 @@ export default function PopupForm() {
       <Typography color="textSecondary" variant="h5">Your connections:</Typography>
       <Select
         className={classes.formControl}
-        options={allPeople.map((obj) => obj.firstName + ' ' + obj.lastName)}
+        options={allPeople.map((obj) => ({
+          id: obj.id,
+          fullName: obj.firstName + ' ' + obj.lastName,
+          content: obj.firstName + ' ' + obj.lastName
+        }))}
         label="Connections..."
-        onChange={(e) => setPersonToAdd({...personToAdd, connections: e.target.value})}
-        // onChange={(e) => setPersonToAdd({...personToAdd, connections: [...personToAdd.connections, {id: '', fullName: e.target.value}]})}
-        value={personToAdd.connections}
+        onChange={handleChangeConnectionsSelect}
+        value={personToAdd.connections.map((obj) => obj.id)}
+        multiple
       />
       <DialogActions>
         <Button onClick={closeModal} value="cancel" variant="outlined" type="button" />
