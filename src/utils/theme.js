@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { colorInputAutofill, colorPrimary, colorPrimaryRgba } from '../constants/constants';
+import { colorPrimary, colorPrimaryRgba } from '../constants/constants';
 
 export default function getTheme() {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -84,7 +84,7 @@ export default function getTheme() {
                 },
                 select: {
                     '&:focus': {
-                        backgroundColor: colorInputAutofill
+                        backgroundColor: 'transparent'
                     }
                 }
             },
