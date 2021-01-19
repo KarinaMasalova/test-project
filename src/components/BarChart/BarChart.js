@@ -7,6 +7,7 @@ import { getAllPeople } from '../../store/people/people.selector';
 export default function BarChart() {
   const allPeople = useSelector(getAllPeople);
   const mapCollection = new Map();
+  const pointsArray = [];
 
   allPeople.forEach((person) => {
     const countryPeople = mapCollection.get(person.country) || []; // [] if undefined
@@ -16,6 +17,10 @@ export default function BarChart() {
         lastName: person.lastName
     }]);
   });
+
+  for (const [key, value] of mapCollection) {
+    pointsArray.push({ y: value.length, label: key });
+  }
 
   const barOptions = {
     animationEnabled: true,
@@ -33,15 +38,7 @@ export default function BarChart() {
     },
     data: [{
         type: "bar",
-        dataPoints: [
-            { y:  2200000000, label: "Facebook" },
-            { y:  1800000000, label: "YouTube" },
-            { y:  800000000, label: "Instagram" },
-            { y:  563000000, label: "Qzone" },
-            { y:  376000000, label: "Weibo" },
-            { y:  336000000, label: "Twitter" },
-            { y:  330000000, label: "Reddit" }
-        ]
+        dataPoints: pointsArray
     }]
 }
 
