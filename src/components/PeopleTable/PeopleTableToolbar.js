@@ -14,10 +14,11 @@ import Button from '../Common/Button/Button';
 
 import { getToolbarStyles } from './style';
 import setAddPersonPopup from '../../store/addPersonPopup/addPersonPopup.actions';
-import { getSelectedPeople } from '../../store/people/people.selector';
+import { getFilteredPeople, getSelectedPeople } from '../../store/people/people.selector';
 
 import { service } from '../../services/Service';
 import { url } from '../../constants/constants';
+import { setFilteredPeople } from '../../store/people/people.actions';
 
 const useStyles = makeStyles(getToolbarStyles);
 
@@ -26,8 +27,14 @@ export default function PeopleTableToolbar(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const selectedPeople = useSelector(getSelectedPeople);
+  const allPeople = useSelector(getFilteredPeople);
 
-  const deletePeople = () => selectedPeople.forEach((person) => service.delete(url, person.id));
+  const deletePeople = () => {
+    selectedPeople.forEach((person) => service.delete(url, person.id));
+    const selectedIds = selectedPeople.map((person) => person.id);
+    const allRestPeople = allPeople.filter((person) => !selectedIds.includes(person.id));
+    dispatch(setFilteredPeople(allRestPeople));
+  };
 
   return (
     <Toolbar

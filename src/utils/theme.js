@@ -74,7 +74,7 @@ export default function getTheme() {
                     padding: '18px 14px',
                     borderColor: colorPrimary,
                     '&:-webkit-autofill': {
-                        '-webkit-box-shadow': `0 0 0 100px ${colorInputAutofill} inset`,
+                        '-webkit-box-shadow': `0 0 0 100px transparent inset`,
                     }
                 },
             },
