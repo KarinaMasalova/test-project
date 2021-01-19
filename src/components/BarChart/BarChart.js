@@ -6,20 +6,16 @@ import { getAllPeople } from '../../store/people/people.selector';
 
 export default function BarChart() {
   const allPeople = useSelector(getAllPeople);
-
-  const set = new Set();
   const mapCollection = new Map();
 
-  allPeople.map((person) => {
-    set.add(person.country);
-    mapCollection.set(`${person.country}`, [{
+  allPeople.forEach((person) => {
+    const countryPeople = mapCollection.get(person.country) || []; // [] if undefined
+    mapCollection.set(person.country, [...countryPeople, {
         id: person.id,
         firstName: person.firstName,
         lastName: person.lastName
     }]);
   });
-
-  console.log(mapCollection);
 
   const barOptions = {
     animationEnabled: true,
