@@ -144,6 +144,11 @@ export default function getTheme() {
                         backgroundColor: colorPrimaryRgba,
                     }
                 }
+            },
+            MuiTooltip: {
+                tooltip: {
+                    fontSize: '16px',
+                }
             }
         }
     });
