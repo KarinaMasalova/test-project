@@ -18,7 +18,7 @@ import { getFilteredPeople, getSelectedPeople } from '../../store/people/people.
 
 import { service } from '../../services/Service';
 import { url } from '../../constants/constants';
-import { setFilteredPeople } from '../../store/people/people.actions';
+import { setFilteredPeople, setSelectedPeople } from '../../store/people/people.actions';
 
 const useStyles = makeStyles(getToolbarStyles);
 
@@ -34,6 +34,7 @@ export default function PeopleTableToolbar(props) {
     const selectedIds = selectedPeople.map((person) => person.id);
     const allRestPeople = allPeople.filter((person) => !selectedIds.includes(person.id));
     dispatch(setFilteredPeople(allRestPeople));
+    dispatch(setSelectedPeople([]));
   };
 
   return (
