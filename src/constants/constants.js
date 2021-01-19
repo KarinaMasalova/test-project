@@ -31,3 +31,20 @@ export const roleOptions = [
     { id: 0, label: "lawyer" },
     { id: 1, label: "client" }
 ];
+export const pieOptions = {
+    theme: "dark2",
+    animationEnabled: true,
+    exportFileName: "The Ratio of Lawyers to Clients",
+    exportEnabled: true,
+    title: {
+        text: "The Ratio of Lawyers to Clients"
+    },
+    data: [{
+        type: "pie",
+        showInLegend: true,
+        legendText: "{label}",
+        toolTipContent: "{label}: <strong>{y}%</strong>",
+        indexLabel: "{y}%",
+        indexLabelPlacement: "inside",
+    }]
+}
