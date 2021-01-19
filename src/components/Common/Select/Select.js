@@ -1,3 +1,5 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -42,11 +44,9 @@ export default function SimpleSelect(props) {
 
 SimpleSelect.propTypes = {
   onChange: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
   options: PropTypes.array.isRequired,
   label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.any,
   className: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/require-default-props
   multiple: PropTypes.bool,
 };
