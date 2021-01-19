@@ -10,7 +10,10 @@ import ThemeSwitch from '../SwitchTheme/SwitchTheme';
 import UserProfileIcon from '../UserProfileIcon/UserProfileIcon';
 
 const options = [
-  <ThemeSwitch />
+  {
+    id: 0,
+    content: <ThemeSwitch />
+  }
 ];
 
 export default function HeaderOptionsMenu() {
@@ -43,8 +46,8 @@ export default function HeaderOptionsMenu() {
         PaperProps={{className: classes.style}}
       >
         {options.map((option) => (
-          <MenuItem key={option} paperprops={{className: classes.style}}>
-            {option}
+          <MenuItem key={option.id} paperprops={{className: classes.style}}>
+            {option.content}
           </MenuItem>
         ))}
       </Menu>

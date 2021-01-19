@@ -68,19 +68,14 @@ export default function PeopleTable() {
     dispatch(setSelectedPeople([]));
   };
 
-  const handleRowClick = (event, name) => {
-    const selectedIndex = selectedPeople.findIndex((selectedValue) => selectedValue === name);
+  const handleRowClick = (event, person) => {
+    const selectedIndex = selectedPeople.findIndex((selectedValue) => selectedValue.id === person.id);
     let newSelected = [];
 
     if (selectedIndex === -1) {
-      newSelected = [...newSelected, ...selectedPeople, name];
-    } else if (selectedIndex === 0) {
-      newSelected = [...newSelected, ...selectedPeople.slice(1)];
-    } else if (selectedIndex === selectedPeople.length - 1) {
-      newSelected = [...newSelected, ...selectedPeople.slice(0, -1)];
-    } else if (selectedIndex > 0) {
+      newSelected = [...selectedPeople, person];
+    } else if (selectedIndex >= 0) {
       newSelected = [
-        ...newSelected,
         ...selectedPeople.slice(0, selectedIndex),
         ...selectedPeople.slice(selectedIndex + 1),
       ];

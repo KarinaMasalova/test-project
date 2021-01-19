@@ -12,6 +12,13 @@ import { getAllPeople } from '../../store/people/people.selector';
 import getFiltersBlockStyles from './style';
 import { roleOptions, ageOptions } from '../../constants/constants';
 
+const initialState = {
+  name: '',
+  location: '',
+  age: '',
+  role: ''
+};
+
 const useStyles = makeStyles(getFiltersBlockStyles);
 
 export default function PeopleOverview() {
@@ -19,12 +26,7 @@ export default function PeopleOverview() {
     const classes = useStyles();
     const allPeopleData = useSelector(getAllPeople);
 
-    const [filters, setFilters] = useState({
-      name: '',
-      location: '',
-      age: '',
-      role: ''
-    });
+    const [filters, setFilters] = useState(initialState);
 
     useEffect(() => { filterTable() }, [filters]);
 
@@ -43,11 +45,11 @@ export default function PeopleOverview() {
 
     const handleFilterChange = (event, filter) => {
         const obj = { ...filters };
-        obj[filter] = event;
+        obj[filter] = event.target.value;
         setFilters(obj);
     }
 
-    const handleResetButtonClick = () => setFilters({name: '', location: '', age: '', role: ''});
+    const handleResetButtonClick = () => setFilters(initialState);
 
     return (
       <div className={classes.root}>

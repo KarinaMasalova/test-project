@@ -27,7 +27,7 @@ export default function PeopleTableToolbar(props) {
   const dispatch = useDispatch();
   const selectedPeople = useSelector(getSelectedPeople);
 
-  const deletePeople = () => selectedPeople.map((person) => service.delete(url, person.id));
+  const deletePeople = () => selectedPeople.forEach((person) => service.delete(url, person.id));
 
   return (
     <Toolbar
