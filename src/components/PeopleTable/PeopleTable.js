@@ -34,7 +34,7 @@ export default function PeopleTable() {
   const allPeopleData = useSelector(getFilteredPeople);
   const selectedPeople = useSelector(getSelectedPeople);
 
-  const isSelected = (name) => selectedPeople.findIndex((selectedValue) => name === selectedValue) !== -1;
+  const isSelected = (person) => selectedPeople.findIndex((selectedValue) => person.id === selectedValue.id) !== -1;
 
   const convertTimeStamp = (value) => {
     const date = new Date(value * 1000);
@@ -61,7 +61,7 @@ export default function PeopleTable() {
 
   const handleSelectAllRowsClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = allPeopleData.map((n) => n.firstName);
+      const newSelecteds = allPeopleData.map((n) => n);
       dispatch(setSelectedPeople(newSelecteds));
       return;
     }

@@ -31,6 +31,7 @@ export default function getTheme() {
             MuiTypography: {
                 colorInherit: {
                     fontSize: '1.5rem',
+                    color: '#424242',
                 },
                 h6: {
                     fontSize: '3rem',
