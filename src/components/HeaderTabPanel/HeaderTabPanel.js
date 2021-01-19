@@ -7,6 +7,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 import getTabPanelStyles from './styles';
+import navigate from '../../utils/navigation';
 import tabProps from '../../utils/headerTabs/tabProps';
 import { PEOPLE_KEY, CHARTS_KEY } from '../../constants/constants';
 
@@ -16,16 +17,14 @@ export default function HeaderTabPanel() {
   const history = useHistory();
   const [value, setValue] = useState(0);
 
-  const changePath = (path) => history.push(path);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
     switch(newValue) {
       case 0:
-        changePath('/');
+        navigate(history, '/');
         break;
       case 1:
-        changePath('/charts');
+        navigate(history, '/charts');
         break;
       default: break;
     }
