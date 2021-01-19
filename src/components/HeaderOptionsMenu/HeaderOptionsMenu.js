@@ -6,11 +6,11 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import getMenuStyles from './styles';
-import Switch from '../Switch/Switch';
+import ThemeSwitch from '../SwitchTheme/SwitchTheme';
 import UserProfileIcon from '../UserProfileIcon/UserProfileIcon';
 
 const options = [
-  <Switch />
+  <ThemeSwitch />
 ];
 
 export default function HeaderOptionsMenu() {
